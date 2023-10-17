@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { routes } from './app.routes';
+import { appInitializerProvider } from './app.initializer';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,9 @@ import { routes } from './app.routes';
 
         RouterModule.forRoot(routes),
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [
+        appInitializerProvider,
+    ],
 })
 export class AppModule { }

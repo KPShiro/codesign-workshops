@@ -1,0 +1,16 @@
+// Tailwind CSS
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Material Symbols
+@import '/src/assets/fonts/MaterialSymbols/material-symbols.scss';
+
+// App Themes
+@import './default-theme.scss';
+
+@layer base {
+    body {
+        @apply bg-surface-sunken-default text-default text-base;
+    }
+}

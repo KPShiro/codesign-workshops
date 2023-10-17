@@ -1,0 +1,136 @@
+@use './variables' as variables;
+
+@layer base {
+    .default-theme {
+        /* Background */
+        --color-background-disabled: #{variables.$color-neutralDark-alpha-100};
+
+        --color-background-surface-default: #{variables.$color-neutralDark-solid-100};
+        --color-background-surface-hovered: #{variables.$color-neutralDark-solid-200};
+        --color-background-surface-pressed: #{variables.$color-neutralDark-solid-250};
+
+        --color-background-surface-sunken-default: #{variables.$color-neutralDark-solid-0};
+        --color-background-surface-sunken-hovered: #{variables.$color-neutralDark-solid-0};
+        --color-background-surface-sunken-pressed: #{variables.$color-neutralDark-solid-0};
+
+        --color-background-surface-raised-default: #{variables.$color-neutralDark-solid-200};
+        --color-background-surface-raised-hovered: #{variables.$color-neutralDark-solid-250};
+        --color-background-surface-raised-pressed: #{variables.$color-neutralDark-solid-300};
+
+        --color-background-surface-overlay-default: #{variables.$color-neutralDark-solid-250};
+        --color-background-surface-overlay-hovered: #{variables.$color-neutralDark-solid-300};
+        --color-background-surface-overlay-pressed: #{variables.$color-neutralDark-solid-350};
+
+        --color-background-inversed-default: rgba(255, 255, 255, 0.04);
+        --color-background-inversed-hovered: rgba(255, 255, 255, 0.12);
+        --color-background-inversed-pressed: rgba(255, 255, 255, 0.2);
+
+        --color-background-input-default: #{variables.$color-neutralDark-solid-200};
+        --color-background-input-hovered: #{variables.$color-neutralDark-solid-250};
+        --color-background-input-pressed: #{variables.$color-neutralDark-solid-200};
+
+        --color-background-neutral-default: #{variables.$color-neutralDark-alpha-200};
+        --color-background-neutral-hovered: #{variables.$color-neutralDark-alpha-300};
+        --color-background-neutral-pressed: #{variables.$color-neutralDark-alpha-400};
+
+        --color-background-neutral-subtle-default: #{variables.$color-neutralDark-alpha-100};
+        --color-background-neutral-subtle-hovered: #{variables.$color-neutralDark-alpha-200};
+        --color-background-neutral-subtle-pressed: #{variables.$color-neutralDark-alpha-300};
+
+        --color-background-neutral-bold-default: #{variables.$color-neutralDark-solid-800};
+        --color-background-neutral-bold-hovered: #{variables.$color-neutralDark-solid-900};
+        --color-background-neutral-bold-pressed: #{variables.$color-neutralDark-solid-1000};
+
+        --color-background-brand-default: #{variables.$color-green-1000};
+        --color-background-brand-hovered: #{variables.$color-green-900};
+        --color-background-brand-pressed: #{variables.$color-green-800};
+
+        --color-background-brand-bold-default: #{variables.$color-green-400};
+        --color-background-brand-bold-hovered: #{variables.$color-green-300};
+        --color-background-brand-bold-pressed: #{variables.$color-green-200};
+
+        --color-background-danger-default: #{variables.$color-red-1000};
+        --color-background-danger-hovered: #{variables.$color-red-900};
+        --color-background-danger-pressed: #{variables.$color-red-800};
+
+        --color-background-danger-bold-default: #{variables.$color-red-400};
+        --color-background-danger-bold-hovered: #{variables.$color-red-300};
+        --color-background-danger-bold-pressed: #{variables.$color-red-200};
+
+        --color-background-warning-default: #{variables.$color-orange-1000};
+        --color-background-warning-hovered: #{variables.$color-orange-900};
+        --color-background-warning-pressed: #{variables.$color-orange-800};
+
+        --color-background-warning-bold-default: #{variables.$color-orange-400};
+        --color-background-warning-bold-hovered: #{variables.$color-orange-300};
+        --color-background-warning-bold-pressed: #{variables.$color-orange-200};
+
+        --color-background-success-default: #{variables.$color-green-1000};
+        --color-background-success-hovered: #{variables.$color-green-900};
+        --color-background-success-pressed: #{variables.$color-green-800};
+
+        --color-background-success-bold-default: #{variables.$color-green-400};
+        --color-background-success-bold-hovered: #{variables.$color-green-300};
+        --color-background-success-bold-pressed: #{variables.$color-green-200};
+
+        --color-background-info-default: #{variables.$color-blue-1000};
+        --color-background-info-hovered: #{variables.$color-blue-900};
+        --color-background-info-pressed: #{variables.$color-blue-800};
+
+        --color-background-info-bold-default: #{variables.$color-blue-400};
+        --color-background-info-bold-hovered: #{variables.$color-blue-300};
+        --color-background-info-bold-pressed: #{variables.$color-blue-200};
+
+        /* Border */
+        --color-border-default: #{variables.$color-neutralDark-alpha-200};
+        --color-border-focused: #{variables.$color-neutralDark-alpha-500};
+        --color-border-disabled: #{variables.$color-neutralDark-alpha-200};
+        --color-border-brand: #{variables.$color-green-400};
+        --color-border-danger: #{variables.$color-red-500};
+        --color-border-warning: #{variables.$color-orange-500};
+        --color-border-success: #{variables.$color-green-500};
+        --color-border-info: #{variables.$color-blue-500};
+
+        /* Icon (.text-icon-*) */
+        --color-icon-default: #{variables.$color-neutralDark-solid-700};
+        --color-icon-subtle: #{variables.$color-neutralDark-solid-500};
+        --color-icon-subtlest: #{variables.$color-neutralDark-solid-350};
+        --color-icon-inversed: #{variables.$color-neutralDark-solid-0};
+        --color-icon-disabled: #{variables.$color-neutralDark-alpha-400};
+        --color-icon-brand: #{variables.$color-green-400};
+        --color-icon-danger: #{variables.$color-red-500};
+        --color-icon-warning: #{variables.$color-orange-500};
+        --color-icon-success: #{variables.$color-green-500};
+        --color-icon-info: #{variables.$color-blue-500};
+
+        /* Link (.text-link-*) */
+        --color-link-default: #{variables.$color-green-400};
+        --color-link-pressed: #{variables.$color-green-300};
+
+        /* Text */
+        --color-text-default: #{variables.$color-neutralDark-solid-1000};
+        --color-text-subtle: #{variables.$color-neutralDark-solid-700};
+        --color-text-subtlest: #{variables.$color-neutralDark-solid-500};
+        --color-text-inversed: #{variables.$color-neutralDark-solid-0};
+        --color-text-disabled: #{variables.$color-neutralDark-alpha-400};
+        --color-text-brand: #{variables.$color-green-400};
+        --color-text-danger: #{variables.$color-red-300};
+        --color-text-warning: #{variables.$color-orange-300};
+        --color-text-success: #{variables.$color-green-300};
+        --color-text-info: #{variables.$color-blue-300};
+
+        /* Text (accent) */
+        --color-text-accent-red-default: #{variables.$color-red-300};
+        --color-text-accent-red-bolder: #{variables.$color-red-200};
+        --color-text-accent-orange-default: #{variables.$color-orange-300};
+        --color-text-accent-orange-bolder: #{variables.$color-orange-200};
+        --color-text-accent-yellow-default: #{variables.$color-yellow-300};
+        --color-text-accent-yellow-bolder: #{variables.$color-yellow-200};
+        --color-text-accent-green-default: #{variables.$color-green-300};
+        --color-text-accent-green-bolder: #{variables.$color-green-200};
+        --color-text-accent-blue-default: #{variables.$color-blue-300};
+        --color-text-accent-blue-bolder: #{variables.$color-blue-200};
+        --color-text-accent-purple-default: #{variables.$color-purple-300};
+        --color-text-accent-purple-bolder: #{variables.$color-purple-200};
+    }
+}

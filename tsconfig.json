@@ -21,11 +21,8 @@
             "dom"
         ],
         "paths": {
-            "@app/*": [
+            "@codesign/*": [
                 "src/app/*"
-            ],
-            "@assets/*": [
-                "src/assets/*"
             ]
         },
         "useDefineForClassFields": false,

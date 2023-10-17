@@ -15,7 +15,7 @@ export default {
         }
     },
     moduleNameMapper: {
-        "@app(.*)": "<rootDir>/src/app/$1",
+        "@codesign(.*)": "<rootDir>/src/app/$1",
         "@assets(.*)": "<rootDir>/src/assets/$1",
     }
 };

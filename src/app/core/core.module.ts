@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { SharedModule } from '@app/shared/shared.module';
+import { SharedModule } from '@codesign/shared/shared.module';
 
 @NgModule({
     imports: [

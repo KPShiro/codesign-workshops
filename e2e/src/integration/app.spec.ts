@@ -1,9 +1,9 @@
 import { getWelcomeMessage } from '../support/app.po';
 
-describe('ng-template', () => {
+describe('codesign-workshops', () => {
     beforeEach(() => cy.visit('/'));
 
     it('should display welcome message', () => {
-        getWelcomeMessage().contains('Thank you for using ng-template');
+        getWelcomeMessage().contains('Thank you for using codesign-workshops');
     });
 });

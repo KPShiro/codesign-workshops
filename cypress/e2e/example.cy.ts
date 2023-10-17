@@ -5,7 +5,7 @@ describe('Example e2e tests', () => {
     })
 
     it('Displays a title', () => {
-        cy.get('.text__title').contains('ng-template')
+        cy.get('.text__title').contains('codesign-workshops')
     })
 
 })

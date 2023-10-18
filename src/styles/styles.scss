@@ -9,8 +9,24 @@
 // App Themes
 @import './default-theme.scss';
 
-@layer base {
-    body {
-        @apply bg-surface-sunken-default text-default text-base;
+body {
+    @apply bg-surface-sunken-default text-default text-base;
+}
+
+@layer components {
+    button[appButton] {
+        @apply inline-flex items-center justify-center gap-2 w-fit px-4 h-10 rounded bg-surface-default hover:bg-surface-hovered active:bg-surface-pressed disabled:bg-disabled disabled:text-disabled text-center text-button leading-button font-button text-default enabled:cursor-pointer;
+    }
+
+    [appButtonGroup] {
+        @apply flex gap-1 p-1 w-fit rounded border-2 border-default;
+    }
+
+    [appButtonGroup] button {
+        @apply inline-flex items-center justify-center gap-2 w-fit px-4 h-10 rounded-sm hover:bg-surface-hovered active:bg-surface-pressed disabled:text-disabled text-button leading-button font-button text-default enabled:cursor-pointer;
+    }
+
+    [appButtonGroup] button.active {
+        @apply bg-brand-default text-brand;
     }
 }

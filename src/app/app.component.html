@@ -1,1 +1,34 @@
-<router-outlet></router-outlet>
+<div class="sidenav">
+    <div class="flex gap-1 items-center justify-center h-12">
+        <span class="font-bold text-brand">
+            CODESING
+        </span>
+        Workshops
+    </div>
+    <div class="sidenav__separator"></div>
+    <div class="sidenav__links">
+        <ng-container *ngFor="let item of items">
+            <button #navbarLink type="button" class="sidenav-item" [routerLink]="item.path" routerLinkActive="active">
+                <span class="truncate">
+                    {{ item.title }}
+                </span>
+                <span class="material-symbols" *ngIf="item.hasChildren">
+                    {{ isOpened(navbarLink) ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
+                </span>
+            </button>
+            <ng-container *ngIf="isOpened(navbarLink)">
+                <div class="sidenav-item__children">
+                    <button *ngFor="let subitem of item.children" type="button" class="sidenav-item sidenav-item--child"
+                        [routerLink]="[item.path, subitem.path]" routerLinkActive="active">
+                        <span class="truncate">
+                            {{ subitem.title }}
+                        </span>
+                    </button>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+<div class="flex-1 overflow-auto">
+    <router-outlet></router-outlet>
+</div>

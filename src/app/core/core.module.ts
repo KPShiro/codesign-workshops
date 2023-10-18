@@ -1,9 +1,18 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+
 import { SharedModule } from '@codesign/shared/shared.module';
+import {
+    IntroductionViewComponent,
+    SubjectsViewComponent,
+} from '@codesign/core/views';
 
 @NgModule({
     imports: [
         SharedModule,
+    ],
+    declarations: [
+        IntroductionViewComponent,
+        SubjectsViewComponent,
     ],
 })
 export class CoreModule {

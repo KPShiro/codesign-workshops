@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 
-import { IntroductionViewComponent, SubjectsViewComponent } from "@codesign/core/views";
+import { IntroductionViewComponent, SubjectsViewComponent } from "@codesign/rxjs/views";
 import { PageLayoutViewComponent } from "@codesign/shared/views";
 
 export const routes: Routes = [

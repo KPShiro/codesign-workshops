@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RxjsModule } from '@codesign/core/rxjs.module';
+import { RxjsModule } from '@codesign/rxjs/rxjs.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';

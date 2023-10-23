@@ -2,12 +2,12 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
-import { PageLayoutViewComponent } from "@codesign/shared/views";
-
-const modules = [
+const modules: any = [
     CommonModule,
     RouterModule,
 ];
+
+const components: any = [];
 
 @NgModule({
     imports: [
@@ -15,9 +15,10 @@ const modules = [
     ],
     exports: [
         ...modules,
+        ...components,
     ],
     declarations: [
-        PageLayoutViewComponent,
+        ...components,
     ],
 })
 export class SharedModule { }

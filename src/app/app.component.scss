@@ -18,7 +18,7 @@
     @apply relative flex-shrink-0 flex items-center justify-between px-4 h-12 rounded text-button font-button leading-button hover:bg-surface-hovered active:bg-surface-pressed;
 }
 
-.sidenav-item.active {
+.sidenav-item.sidenav-item--active {
     @apply bg-brand-default text-brand;
 }
 
@@ -26,6 +26,6 @@
     @apply flex flex-col h-full rounded overflow-hidden border border-default;
 }
 
-.sidenav-item--child {
+.sidenav-item__children > .sidenav-item {
     @apply rounded-none;
 }

@@ -1,7 +1,9 @@
 import { Routes } from "@angular/router";
 
-import { IntroductionViewComponent, SubjectsViewComponent } from "@codesign/rxjs/views";
-import { PageLayoutViewComponent } from "@codesign/shared/views";
+import {
+    Exercise00ViewComponent,
+    IntroductionViewComponent,
+} from "@codesign/rxjs/views";
 
 export const routes: Routes = [
     {
@@ -11,9 +13,8 @@ export const routes: Routes = [
     },
     {
         path: 'rxjs',
-        component: PageLayoutViewComponent,
         data: {
-            title: 'RXJS',
+            title: 'RxJS',
         },
         children: [
             {
@@ -26,15 +27,13 @@ export const routes: Routes = [
                 component: IntroductionViewComponent,
                 data: {
                     title: 'Introduction',
-                    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam doloremque iusto ratione repudiandae dolorum consequatur sapiente, architecto facere amet? Voluptatem delectus illo eaque distinctio saepe architecto deleniti ut harum.`,
                 },
             },
             {
-                path: 'subjects',
-                component: SubjectsViewComponent,
+                path: 'execrise-0-0',
+                component: Exercise00ViewComponent,
                 data: {
-                    title: 'Subjects',
-                    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam doloremque iusto ratione repudiandae dolorum consequatur sapiente, architecto facere amet? Voluptatem delectus illo eaque distinctio saepe architecto deleniti ut harum.`,
+                    title: 'Exercise 0.0',
                 },
             },
         ],

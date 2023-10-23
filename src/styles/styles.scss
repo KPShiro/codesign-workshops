@@ -15,7 +15,15 @@ body {
 
 @layer components {
     button[appButton] {
-        @apply inline-flex items-center justify-center gap-2 w-fit px-4 h-10 rounded bg-surface-default hover:bg-surface-hovered active:bg-surface-pressed disabled:bg-disabled disabled:text-disabled text-center text-button leading-button font-button text-default enabled:cursor-pointer;
+        @apply inline-flex items-center justify-center gap-2 w-fit px-4 h-10 rounded bg-inversed-default hover:bg-inversed-hovered active:bg-inversed-pressed disabled:bg-disabled disabled:text-disabled text-center text-button leading-button font-button text-default enabled:cursor-pointer select-none;
+    }
+
+    button[appButton][size='small'] {
+        @apply p-1 h-fit;
+    }
+
+    button[appButton][variant='primary'] {
+        @apply enabled:bg-brand-bold-default enabled:hover:bg-brand-bold-hovered enabled:active:bg-brand-bold-pressed enabled:text-inversed;
     }
 
     [appButtonGroup] {

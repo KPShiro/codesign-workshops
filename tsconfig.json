@@ -23,6 +23,9 @@
         "paths": {
             "@codesign/*": [
                 "src/app/*"
+            ],
+            "@assets/*": [
+                "src/assets/*"
             ]
         },
         "useDefineForClassFields": false,

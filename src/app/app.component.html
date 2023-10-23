@@ -7,21 +7,23 @@
     </div>
     <div class="sidenav__separator"></div>
     <div class="sidenav__links">
-        <ng-container *ngFor="let item of items">
-            <button #navbarLink type="button" class="sidenav-item" [routerLink]="item.path" routerLinkActive="active">
+        <ng-container *ngFor="let item of items$ | async">
+            <button #navbarLink type="button" class="sidenav-item" [routerLink]="item.path"
+                routerLinkActive="sidenav-item--active">
                 <span class="truncate">
                     {{ item.title }}
                 </span>
-                <span class="material-symbols" *ngIf="item.hasChildren">
+                <span class="material-symbols" *ngIf="!!item.children">
                     {{ isOpened(navbarLink) ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
                 </span>
             </button>
             <ng-container *ngIf="isOpened(navbarLink)">
                 <div class="sidenav-item__children">
-                    <button *ngFor="let subitem of item.children" type="button" class="sidenav-item sidenav-item--child"
-                        [routerLink]="[item.path, subitem.path]" routerLinkActive="active">
+                    <button *ngFor="let childItem of item.children" type="button" class="sidenav-item"
+                        [routerLink]="[childItem.path]" routerLinkActive="sidenav-item--active"
+                        [routerLinkActiveOptions]="{ exact: true }">
                         <span class="truncate">
-                            {{ subitem.title }}
+                            {{ childItem.title }}
                         </span>
                     </button>
                 </div>
@@ -29,6 +31,6 @@
         </ng-container>
     </div>
 </div>
-<div class="flex-1 overflow-auto">
+<div class="flex-1 flex flex-col overflow-auto">
     <router-outlet></router-outlet>
 </div>

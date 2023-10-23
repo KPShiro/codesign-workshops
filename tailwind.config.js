@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-        "./src/**/*.{html,ts}",
-    ],
+    content: ['./src/**/*.{html,ts}'],
     theme: {
         colors: {
             inherit: 'inherit',
@@ -38,6 +36,14 @@ module.exports = {
                 button: '1rem',
                 small: '0.875rem',
                 base: '1.25rem',
+            },
+            height: {
+                'button-sm': '2rem',
+                'button-md': '2.5rem',
+            },
+            width: {
+                'button-sm': '2rem',
+                'button-md': '2.5rem',
             },
             backgroundColor: {
                 disabled: 'var(--color-background-disabled)',
@@ -219,4 +225,4 @@ module.exports = {
         }),
     ],
     darkMode: 'class',
-}
+};

@@ -1,0 +1,27 @@
+.app-button {
+    @apply inline-flex items-center justify-center px-3 h-button-md rounded border-2 border-transparent bg-inversed-default enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed disabled:bg-disabled disabled:text-disabled disabled:cursor-default text-center text-button leading-button font-button text-default cursor-pointer select-none;
+}
+
+.app-button[size='sm'] {
+    @apply px-2 h-button-sm rounded-[3px] text-button-small leading-button-small;
+}
+
+.app-button-wrapper {
+    @apply inline-flex items-center justify-center gap-3;
+}
+
+.app-button[size='sm'] .app-button-wrapper {
+    @apply gap-2;
+}
+
+.app-button[variant='primary'] {
+    @apply enabled:bg-brand-bold-default enabled:hover:bg-brand-bold-hovered enabled:active:bg-brand-bold-pressed enabled:text-inversed;
+}
+
+.app-button[variant='outlined'] {
+    @apply enabled:bg-transparent enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed enabled:border-default;
+}
+
+.app-button[variant='text'] {
+    @apply enabled:bg-transparent enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed;
+}

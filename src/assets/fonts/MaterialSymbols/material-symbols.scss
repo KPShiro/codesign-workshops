@@ -9,9 +9,9 @@
     font-family: 'Material Symbols Rounded';
     font-weight: normal;
     font-style: normal;
-    font-size: 16px; /* Preferred icon size */
+    font-size: min(theme('fontSize.icon'), inherit); /* Preferred icon size */
     display: inline-block;
-    line-height: 1;
+    line-height: min(theme('lineHeight.icon'), inherit);
     text-transform: none;
     letter-spacing: normal;
     word-wrap: normal;

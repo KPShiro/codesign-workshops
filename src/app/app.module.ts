@@ -10,9 +10,7 @@ import { routes } from './app.routes';
 import { appInitializerProvider } from './app.initializer';
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -27,8 +25,6 @@ import { appInitializerProvider } from './app.initializer';
         RouterModule.forRoot(routes),
     ],
     bootstrap: [AppComponent],
-    providers: [
-        appInitializerProvider,
-    ],
+    providers: [appInitializerProvider],
 })
-export class AppModule { }
+export class AppModule {}

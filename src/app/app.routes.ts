@@ -1,9 +1,6 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
-import {
-    Exercise00ViewComponent,
-    IntroductionViewComponent,
-} from "@codesign/rxjs/views";
+import { Exercise00ViewComponent, IntroductionViewComponent } from '@codesign/rxjs/views';
 
 export const routes: Routes = [
     {

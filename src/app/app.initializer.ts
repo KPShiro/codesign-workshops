@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, Provider } from "@angular/core";
+import { APP_INITIALIZER, Provider } from '@angular/core';
 
 function appInitializerFactory() {
     return () => {

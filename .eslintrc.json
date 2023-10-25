@@ -5,7 +5,7 @@
         "node": true,
         "es6": true
     },
-    "plugins": ["html"],
+    "plugins": ["html", "prettier"],
     "overrides": [
         {
             "files": ["*.ts"],

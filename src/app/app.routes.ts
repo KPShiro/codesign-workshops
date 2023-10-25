@@ -1,6 +1,10 @@
 import { Routes } from '@angular/router';
 
-import { Exercise00ViewComponent, IntroductionViewComponent } from '@codesign/rxjs/views';
+import {
+    Exercise00ViewComponent,
+    Exercise01ViewComponent,
+    IntroductionViewComponent,
+} from '@codesign/rxjs/views';
 
 export const routes: Routes = [
     {
@@ -31,6 +35,13 @@ export const routes: Routes = [
                 component: Exercise00ViewComponent,
                 data: {
                     title: 'Exercise 0.0',
+                },
+            },
+            {
+                path: 'exercise-0-1',
+                component: Exercise01ViewComponent,
+                data: {
+                    title: 'Exercise 0.1',
                 },
             },
         ],

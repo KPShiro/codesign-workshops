@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '@codesign/shared/shared.module';
-import { Exercise00ViewComponent, IntroductionViewComponent } from '@codesign/rxjs/views';
+import {
+    IntroductionViewComponent,
+    Exercise00ViewComponent,
+    Exercise01ViewComponent,
+} from '@codesign/rxjs/views';
 
 @NgModule({
     imports: [SharedModule],
-    declarations: [Exercise00ViewComponent, IntroductionViewComponent],
+    declarations: [
+        IntroductionViewComponent,
+        Exercise00ViewComponent,
+        Exercise01ViewComponent,
+    ],
 })
 export class RxjsModule {}

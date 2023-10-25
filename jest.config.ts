@@ -1,7 +1,11 @@
 export default {
     preset: 'jest-preset-angular',
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-    testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/', '<rootDir>/e2e/'],
+    testPathIgnorePatterns: [
+        '<rootDir>/node_modules/',
+        '<rootDir>/dist/',
+        '<rootDir>/e2e/',
+    ],
     transform: {
         '^.+\\.spec.ts?$': [
             'ts-jest',

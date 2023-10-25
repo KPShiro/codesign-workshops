@@ -43,7 +43,9 @@ export class AppComponent implements OnInit {
     }
 
     private _getNavLinks(routes: Routes, parent?: Route): NavLink[] {
-        return routes.filter(route => !!route.data?.title).map(route => this._mapRoute(route, parent));
+        return routes
+            .filter(route => !!route.data?.title)
+            .map(route => this._mapRoute(route, parent));
     }
 
     ngOnInit(): void {

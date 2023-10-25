@@ -1,0 +1,19 @@
+<div class="flex flex-col gap-6 border border-default p-6 rounded">
+    <h1 *ngIf="title">
+        <ng-container [ngTemplateOutlet]="title"></ng-container>
+    </h1>
+
+    <div *ngIf="description" class="flex flex-col gap-2">
+        <h3>Description</h3>
+        <p class="text-subtle">
+            <ng-container [ngTemplateOutlet]="description"></ng-container>
+        </p>
+    </div>
+
+    <div *ngIf="acceptanceCriteria" class="flex flex-col gap-2">
+        <h3>Acceptance criteria</h3>
+        <ul class="text-subtle list-disc list-inside">
+            <ng-container [ngTemplateOutlet]="acceptanceCriteria"></ng-container>
+        </ul>
+    </div>
+</div>

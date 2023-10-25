@@ -15,7 +15,14 @@
 
     <div class="exercise-container">
         <div class="flex-1 flex flex-col items-center justify-center font-semibold">
-            {{ output$ | async }}
+            <ng-container *ngIf="output$ | async; let output; else: loading">
+                {{ output }}
+            </ng-container>
+            <ng-template #loading>
+                <mat-icon
+                    icon="progress_activity"
+                    class="text-brand animate-spin"></mat-icon>
+            </ng-template>
         </div>
     </div>
 </div>

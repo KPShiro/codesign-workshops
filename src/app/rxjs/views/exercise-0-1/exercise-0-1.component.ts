@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Subject, concatMap, delay, of, switchMap } from 'rxjs';
+import { concatMap, delay, of } from 'rxjs';
 
 @Component({
     selector: 'app-exercise-0-1',
@@ -8,20 +8,12 @@ import { Subject, concatMap, delay, of, switchMap } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Exercise01ViewComponent {
-    private _execute$ = new Subject<void>();
     private _data: number[] = [1, 2, 3, 4, 5];
+    private _delay: number = 1000;
 
     // ------------ EXERCISE ------------
-    private _source$ = of(...this._data);
+    private _source$ = of(this._data);
     // ------------ EXERCISE ------------
 
-    output$ = this._execute$.pipe(
-        switchMap(() =>
-            this._source$.pipe(concatMap(item => of(item).pipe(delay(500))))
-        )
-    );
-
-    execute(): void {
-        this._execute$.next();
-    }
+    output$ = this._source$.pipe(concatMap(item => of(item).pipe(delay(this._delay))));
 }

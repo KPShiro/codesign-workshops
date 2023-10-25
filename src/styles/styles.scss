@@ -13,16 +13,43 @@ body {
     @apply bg-surface-sunken-default text-default text-base;
 }
 
-@layer components {
-    [appButtonGroup] {
-        @apply flex gap-1 p-1 w-fit rounded border-2 border-default;
-    }
+h1 {
+    @apply text-h700 font-semibold;
+}
 
-    [appButtonGroup] button {
-        @apply inline-flex items-center justify-center gap-2 w-fit px-4 h-10 rounded-sm hover:bg-surface-hovered active:bg-surface-pressed disabled:text-disabled text-button leading-button font-button text-default enabled:cursor-pointer;
-    }
+h2 {
+    @apply text-h500 font-semibold;
+}
 
-    [appButtonGroup] button.active {
-        @apply bg-brand-default text-brand;
+h3 {
+    @apply text-h400 font-semibold;
+}
+
+.page-container {
+    @apply max-w-7xl mx-auto p-10 grid grid-cols-1 gap-6;
+}
+
+.page-container--exercise {
+    @apply lg:grid-cols-[32rem_1fr];
+}
+
+.text-section {
+    @apply flex flex-col gap-3 max-w-xl;
+
+    p {
+        @apply text-subtle;
+    }
+}
+
+.exercise-container {
+    @apply flex flex-col border border-dashed border-brand bg-brand-default;
+}
+
+code {
+    @apply relative text-brand px-1.5;
+
+    &::before {
+        content: '';
+        @apply absolute -z-10 bg-brand-default left-0 right-0 -top-px -bottom-0.5 rounded;
     }
 }

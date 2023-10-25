@@ -46,10 +46,10 @@ h3 {
 }
 
 code {
-    @apply relative text-brand px-1.5;
+    @apply relative text-small px-1.5;
 
     &::before {
         content: '';
-        @apply absolute -z-10 bg-brand-default left-0 right-0 -top-px -bottom-0.5 rounded;
+        @apply absolute -z-10 bg-inversed-default border border-default left-0 right-0 -top-0.5 -bottom-0.5 rounded;
     }
 }

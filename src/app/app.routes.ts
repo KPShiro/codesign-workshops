@@ -27,7 +27,7 @@ export const routes: Routes = [
                 },
             },
             {
-                path: 'execrise-0-0',
+                path: 'exercise-0-0',
                 component: Exercise00ViewComponent,
                 data: {
                     title: 'Exercise 0.0',

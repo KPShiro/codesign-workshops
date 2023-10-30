@@ -23,7 +23,7 @@
 }
 
 .sidenav-item__children {
-    @apply flex flex-col h-full rounded overflow-hidden border border-default;
+    @apply flex flex-shrink-0 flex-col rounded overflow-hidden border border-default;
 }
 
 .sidenav-item__children > .sidenav-item {

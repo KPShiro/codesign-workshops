@@ -9,6 +9,9 @@ export class UserStoryComponent {
     @ContentChild('title', { read: TemplateRef<any> })
     title?: TemplateRef<any>;
 
+    @ContentChild('actions', { read: TemplateRef<any> })
+    actions?: TemplateRef<any>;
+
     @ContentChild('description', { read: TemplateRef<any> })
     description?: TemplateRef<any>;
 

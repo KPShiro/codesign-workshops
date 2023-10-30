@@ -1,23 +1,19 @@
-<div class="page-container page-container--exercise">
-    <app-user-story>
-        <ng-template #title> Exercise 0-0 </ng-template>
-        <ng-template #description>
-            As a user, I would like to see current DateTime, so I can easily check the current time and date. It should
-            automatically refresh every second.
-        </ng-template>
-        <ng-template #acceptanceCriteria>
-            <li><code>Observable</code> class was used</li>
-            <li>RxJS <code>operators</code> were not used</li>
-            <li>Do not subscribe to the observable in the components <code>*.ts</code> file</li>
-            <li>The DateTime should be refreshed automatically every second</li>
-        </ng-template>
-    </app-user-story>
+<app-user-story>
+    <ng-template #title>Exercise 0-0</ng-template>
+    <ng-template #description>
+        As a user, I would like to see a digital watch, so I can easily check the
+        current time and date. It should automatically refresh every second.
+    </ng-template>
+    <ng-template #acceptanceCriteria>
+        <li>The content of <code>*.ts</code> file was not modified</li>
+        <li>You didn't subscribe to the observable in the <code>*.ts</code> file</li>
+        <li>The DateTime should be displayed properly</li>
+        <li>The DateTime should be refreshed automatically every second</li>
+    </ng-template>
+</app-user-story>
 
-    <div class="exercise-container">
-        <div class="flex-1 flex items-center justify-center font-semibold">
-            <!-- ------------ EXERCISE ------------ -->
-            {{ data }}
-            <!-- ------------ EXERCISE ------------ -->
-        </div>
-    </div>
+<div class="exercise-wrapper">
+    <!-- ------------ EXERCISE ------------ -->
+    {{ output$ | async }}
+    <!-- ------------ EXERCISE ------------ -->
 </div>

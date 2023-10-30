@@ -6,9 +6,12 @@ import {
     Exercise00ViewComponent,
     Exercise01ViewComponent,
 } from '@codesign/rxjs/views';
+import { RouterModule } from '@angular/router';
+import { routes } from './rxjs.routes';
 
 @NgModule({
-    imports: [SharedModule],
+    imports: [SharedModule, RouterModule.forChild(routes)],
+    exports: [RouterModule],
     declarations: [
         IntroductionViewComponent,
         Exercise00ViewComponent,

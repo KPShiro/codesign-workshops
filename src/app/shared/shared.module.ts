@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 import {
     ButtonComponent,
@@ -8,7 +7,7 @@ import {
     UserStoryComponent,
 } from '@codesign/shared/components';
 
-const modules: any = [CommonModule, RouterModule];
+const modules: any = [CommonModule];
 
 const components: any = [ButtonComponent, MatIconComponent, UserStoryComponent];
 

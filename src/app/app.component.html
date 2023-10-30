@@ -1,26 +1,36 @@
 <div class="sidenav">
     <div class="flex gap-1 items-center justify-center h-12">
-        <span class="font-bold text-brand">
-            CODESING
-        </span>
+        <span class="font-bold text-brand"> CODESING </span>
         Workshops
     </div>
     <div class="sidenav__separator"></div>
     <div class="sidenav__links">
-        <ng-container *ngFor="let item of items$ | async">
-            <button #navbarLink type="button" class="sidenav-item" [routerLink]="item.path"
+        <ng-container *ngFor="let item of navLinks">
+            <button
+                #navbarLink
+                type="button"
+                class="sidenav-item"
+                [routerLink]="item.path"
                 routerLinkActive="sidenav-item--active">
                 <span class="truncate">
                     {{ item.title }}
                 </span>
                 <span class="material-symbols" *ngIf="!!item.children">
-                    {{ isOpened(navbarLink) ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
+                    {{
+                        isOpened(navbarLink)
+                            ? 'keyboard_arrow_down'
+                            : 'keyboard_arrow_right'
+                    }}
                 </span>
             </button>
             <ng-container *ngIf="isOpened(navbarLink)">
                 <div class="sidenav-item__children">
-                    <button *ngFor="let childItem of item.children" type="button" class="sidenav-item"
-                        [routerLink]="[childItem.path]" routerLinkActive="sidenav-item--active"
+                    <button
+                        *ngFor="let childItem of item.children"
+                        type="button"
+                        class="sidenav-item"
+                        [routerLink]="[childItem.path]"
+                        routerLinkActive="sidenav-item--active"
                         [routerLinkActiveOptions]="{ exact: true }">
                         <span class="truncate">
                             {{ childItem.title }}

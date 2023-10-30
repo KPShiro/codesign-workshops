@@ -3,6 +3,10 @@
         <ng-container [ngTemplateOutlet]="title"></ng-container>
     </h1>
 
+    <div *ngIf="actions" class="flex gap-2">
+        <ng-container [ngTemplateOutlet]="actions"></ng-container>
+    </div>
+
     <div *ngIf="description" class="flex flex-col gap-2">
         <h3>Description</h3>
         <p class="text-subtle">

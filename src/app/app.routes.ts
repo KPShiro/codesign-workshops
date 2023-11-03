@@ -11,4 +11,9 @@ export const routes: Routes = [
         loadChildren: () =>
             import('@codesign/rxjs/rxjs.module').then(m => m.RxjsModule),
     },
+    {
+        path: '**',
+        redirectTo: 'rxjs',
+        pathMatch: 'full',
+    },
 ];

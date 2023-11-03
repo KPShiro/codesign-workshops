@@ -1,0 +1,7 @@
+<button type="button" appButton [disabled]="disabled || loading">
+    <ng-content></ng-content>
+</button>
+
+<div *ngIf="loading" class="absolute inset-0 z-10 flex items-center justify-center">
+    <mat-icon icon="progress_activity" class="animate-spin"></mat-icon>
+</div>

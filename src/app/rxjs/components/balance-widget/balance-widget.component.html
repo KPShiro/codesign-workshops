@@ -1,0 +1,55 @@
+<ng-container *ngIf="viewModel$ | async; let viewModel; else: loadingTemplate">
+    <app-navbar-widget [cdkMenuTriggerFor]="menu" [loading]="viewModel.loading">
+        <mat-icon
+            *ngIf="viewModel.balance.allocated > 0"
+            class="animate-pulse text-icon-warning"
+            icon="warning"></mat-icon>
+        {{ viewModel.balance.current | currency: viewModel.balance.currency : 'code' }}
+        <mat-icon icon="arrow_drop_down"></mat-icon>
+    </app-navbar-widget>
+
+    <ng-template #menu>
+        <div class="balance-menu" cdkMenu>
+            <div
+                class="flex flex-col gap-2 p-4 bg-warning-default"
+                *ngIf="viewModel.balance.allocated > 0">
+                <div class="flex justify-between font-medium text-warning">
+                    <span>Allocated:</span>
+                    <span>
+                        {{
+                            viewModel.balance.allocated
+                                | currency: viewModel.balance.currency : 'code'
+                        }}
+                    </span>
+                </div>
+                <div class="text-small opacity-60">
+                    The amount reserved for the pending requests, that are not approved
+                    yet.
+                </div>
+            </div>
+            <div class="balance-menu-items">
+                <button
+                    class="balance-menu-item"
+                    cdkMenuItem
+                    (cdkMenuItemTriggered)="topUp(viewModel.company.id)">
+                    <mat-icon icon="add"></mat-icon>
+                    Top up balance
+                </button>
+                <button class="balance-menu-item" cdkMenuItem disabled>
+                    <mat-icon icon="history"></mat-icon>
+                    Transactions history
+                </button>
+                <button class="balance-menu-item" cdkMenuItem disabled>
+                    <mat-icon icon="notifications_active"></mat-icon>
+                    Balance warnings
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</ng-container>
+
+<ng-template #loadingTemplate>
+    <app-navbar-widget [disabled]="true">
+        <mat-icon icon="progress_activity" class="animate-spin"></mat-icon>
+    </app-navbar-widget>
+</ng-template>

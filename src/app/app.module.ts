@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { RxjsModule } from '@codesign/rxjs/rxjs.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -14,13 +13,8 @@ import { appInitializerProvider } from './app.initializer';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        // Add angular modules here...
 
-        RxjsModule,
         SharedModule,
-        // Add your moules here...
-
-        // Add 3rd party modules here...
 
         RouterModule.forRoot(routes),
     ],

@@ -6,6 +6,9 @@
 // Material Symbols
 @import '/src/assets/fonts/MaterialSymbols/material-symbols.scss';
 
+// Angular Material CDK
+@import '@angular/cdk/overlay-prebuilt.css';
+
 // App Themes
 @import './default-theme.scss';
 
@@ -31,14 +34,6 @@ h3 {
     p {
         @apply text-subtle;
     }
-}
-
-.exercise-page-wrapper {
-    @apply grid grid-cols-1 lg:grid-cols-[32rem_1fr] gap-6 p-10;
-}
-
-.exercise-wrapper {
-    @apply flex items-center justify-center border border-default rounded p-6;
 }
 
 code {

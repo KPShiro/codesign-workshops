@@ -22,12 +22,8 @@ export class AppComponent {
                     path: '/rxjs/introduction',
                 },
                 {
-                    title: 'Exercise 0-0',
-                    path: '/rxjs/exercise/0-0',
-                },
-                {
-                    title: 'Exercise 0-1',
-                    path: '/rxjs/exercise/0-1',
+                    title: 'Exercise 0',
+                    path: '/rxjs/exercise/0',
                 },
             ],
         },

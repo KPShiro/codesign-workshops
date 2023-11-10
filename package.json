@@ -46,7 +46,7 @@
         "@angular/compiler-cli": "~17.0.2",
         "@cypress/schematic": "^2.5.1",
         "@nrwl/cypress": "^17.1.1",
-        "@nrwl/workspace": "^16.9.1",
+        "@nrwl/workspace": "^17.1.1",
         "@tailwindcss/forms": "^0.5.6",
         "@types/jest": "^29.5.5",
         "@types/node": "^20.7.2",

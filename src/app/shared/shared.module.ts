@@ -1,10 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ButtonComponent, MatIconComponent } from '@codesign/shared/components';
+import {
+    ButtonComponent,
+    MatIconComponent,
+    SpinnerComponent,
+} from '@codesign/shared/components';
 
 const modules: any = [CommonModule];
-const components: any = [ButtonComponent, MatIconComponent];
+const components: any = [ButtonComponent, MatIconComponent, SpinnerComponent];
 
 @NgModule({
     imports: [...modules],

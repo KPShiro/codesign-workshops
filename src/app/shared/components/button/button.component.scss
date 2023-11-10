@@ -1,5 +1,5 @@
 .app-button {
-    @apply inline-flex items-center justify-center px-3 h-button-md rounded border-2 border-transparent bg-inversed-default enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed disabled:bg-disabled disabled:text-disabled disabled:cursor-default text-center text-button leading-button font-button text-default cursor-pointer select-none;
+    @apply inline-flex items-center justify-center px-3 h-button-md rounded border-2 border-transparent bg-inversed-default enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed disabled:bg-disabled disabled:text-disabled disabled:cursor-default text-center text-button leading-button font-button text-default whitespace-nowrap cursor-pointer select-none;
 }
 
 .app-button[size='sm'] {

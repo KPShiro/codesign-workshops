@@ -1,7 +1,7 @@
 <ng-container *ngIf="viewModel$ | async; let viewModel; else: loadingTemplate">
     <app-navbar-widget [cdkMenuTriggerFor]="menu" [loading]="viewModel.loading">
         <mat-icon
-            *ngIf="viewModel.balance.allocated > 0"
+            *ngIf="viewModel.isBelowThreshold"
             class="animate-pulse text-icon-warning"
             icon="warning"></mat-icon>
         {{ viewModel.balance.current | currency: viewModel.balance.currency : 'code' }}

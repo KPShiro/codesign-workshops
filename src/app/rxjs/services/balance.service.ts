@@ -32,6 +32,10 @@ export class BalanceService {
         share()
     );
 
+    isBelowThreshold$ = this.balance$.pipe(
+        map(balance => balance.current <= balance.threshold)
+    );
+
     constructor(
         private readonly _balanceRestService: BalanceRestService,
         private readonly _companyService: CompanyService

@@ -12,9 +12,17 @@ import { BalanceService, CompanyService } from '@codesign/rxjs/services';
 export class BalanceWidgetComponent {
     viewModel$ = combineLatest([
         this._balanceService.balance$,
+        this._balanceService.isBelowThreshold$,
         this._balanceService.loading$,
         this._companyService.company$,
-    ]).pipe(map(([balance, loading, company]) => ({ balance, loading, company })));
+    ]).pipe(
+        map(([balance, isBelowThreshold, loading, company]) => ({
+            balance,
+            isBelowThreshold,
+            loading,
+            company,
+        }))
+    );
 
     constructor(
         private readonly _balanceService: BalanceService,

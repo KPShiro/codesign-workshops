@@ -10,14 +10,16 @@ export class BalanceRestService {
     private readonly _data: IBalance[] = [
         {
             companyId: '0',
-            allocated: 55.45,
-            current: 944.55,
+            allocated: 25.5,
+            current: 974.5,
+            threshold: 1000.0,
             currency: Currency.EUR,
         },
         {
             companyId: '1',
-            allocated: 0,
-            current: 3000,
+            allocated: 15.0,
+            current: 585.0,
+            threshold: 500.0,
             currency: Currency.PLN,
         },
     ];

@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { combineLatest, map } from 'rxjs';
 
-import { BalanceService, CompanyService } from '@codesign/rxjs/services';
+import { BalanceService } from '@codesign/rxjs/services';
+import { TopUpCommand } from '@codesign/rxjs/commands';
+import { IBalance } from '@codesign/rxjs/interfaces';
+import { createAction } from '@codesign/rxjs/rxjs.helpers';
 
 @Component({
     selector: 'app-balance-widget',
@@ -10,26 +13,20 @@ import { BalanceService, CompanyService } from '@codesign/rxjs/services';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BalanceWidgetComponent {
-    viewModel$ = combineLatest([
-        this._balanceService.balance$,
-        this._balanceService.isBelowThreshold$,
-        this._balanceService.loading$,
-        this._companyService.company$,
-    ]).pipe(
-        map(([balance, isBelowThreshold, loading, company]) => ({
+    viewModel$ = combineLatest([this._balanceService.balance$]).pipe(
+        map(([balance]) => ({
             balance,
-            isBelowThreshold,
-            loading,
-            company,
         }))
     );
 
+    actions = [
+        createAction(this._topUpCommand, (balance: IBalance) =>
+            this._topUpCommand.execute({ companyId: balance.companyId, amount: 100 })
+        ),
+    ];
+
     constructor(
         private readonly _balanceService: BalanceService,
-        private readonly _companyService: CompanyService
+        private readonly _topUpCommand: TopUpCommand
     ) {}
-
-    topUp(companyId: string): void {
-        this._balanceService.topUp(companyId, 100);
-    }
 }

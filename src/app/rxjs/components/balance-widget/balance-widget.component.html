@@ -1,7 +1,7 @@
 <ng-container *ngIf="viewModel$ | async; let viewModel; else: loadingTemplate">
-    <app-navbar-widget [cdkMenuTriggerFor]="menu" [loading]="viewModel.loading">
+    <app-navbar-widget [cdkMenuTriggerFor]="menu" [loading]="viewModel.balance.processing">
         <mat-icon
-            *ngIf="viewModel.isBelowThreshold"
+            *ngIf="viewModel.balance.isBelowThreshold"
             class="animate-pulse text-icon-warning"
             icon="warning"></mat-icon>
         {{ viewModel.balance.current | currency: viewModel.balance.currency : 'code' }}
@@ -28,13 +28,15 @@
                 </div>
             </div>
             <div class="balance-menu-items">
-                <button
+                @for(action of actions; track action.text) {
+                    <button
                     class="balance-menu-item"
                     cdkMenuItem
-                    (cdkMenuItemTriggered)="topUp(viewModel.company.id)">
-                    <mat-icon icon="add"></mat-icon>
-                    Top up balance
-                </button>
+                    (cdkMenuItemTriggered)="action.execute(viewModel.balance)">
+                        <mat-icon [icon]="action.icon"></mat-icon>
+                        {{ action.text }}
+                    </button>
+                }
                 <button class="balance-menu-item" cdkMenuItem disabled>
                     <mat-icon icon="history"></mat-icon>
                     Transactions history

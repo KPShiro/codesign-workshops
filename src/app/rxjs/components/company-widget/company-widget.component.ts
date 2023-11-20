@@ -13,7 +13,7 @@ export class CompanyWidgetComponent {
     viewModel$ = combineLatest([
         this._companyService.company$,
         this._companyService.companies$,
-        this._companyService.loading$,
+        this._companyService.processing$,
     ]).pipe(
         map(([company, companies, loading]) => ({
             company,

@@ -1,5 +1,6 @@
 export * from './api-response.interface';
 export * from './balance.interface';
+export * from './command.interface';
 export * from './company.interface';
 export * from './location.interface';
 export * from './move-request.interface';

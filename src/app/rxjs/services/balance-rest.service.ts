@@ -28,20 +28,36 @@ export class BalanceRestService {
         const entity = this._data.find(item => item.companyId === companyId);
 
         if (entity === undefined) {
-            throw new Error('Balance not found');
+            throw new Error('Balance not found!');
         }
 
         return of({ ...entity }).pipe(delay(randomizeDelay()));
     }
 
-    topUp(companyId: string, amount: number): Observable<void> {
+    addAmount(companyId: string, amount: number): Observable<void> {
         const entity = this._data.find(item => item.companyId === companyId);
 
         if (entity === undefined) {
-            throw new Error('Balance not found');
+            throw new Error('Balance not found!');
         }
 
         entity.current += amount;
+
+        return of(undefined).pipe(delay(randomizeDelay()));
+    }
+
+    removeAmount(companyId: string, amount: number): Observable<void> {
+        const entity = this._data.find(item => item.companyId === companyId);
+
+        if (entity === undefined) {
+            throw new Error('Balance not found!');
+        }
+
+        if (entity.current - amount < 0) {
+            throw new Error('Balance cannot be negative!');
+        }
+
+        entity.current -= amount;
 
         return of(undefined).pipe(delay(randomizeDelay()));
     }

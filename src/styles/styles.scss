@@ -44,3 +44,7 @@ code {
         @apply absolute -z-10 bg-inversed-default border border-default left-0 right-0 -top-0.5 -bottom-0.5 rounded;
     }
 }
+
+.cdk-dialog-container {
+    @apply border border-default shadow rounded bg-surface-raised-default;
+}

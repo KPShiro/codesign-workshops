@@ -4,7 +4,6 @@ import { combineLatest, map } from 'rxjs';
 import { BalanceService } from '@codesign/rxjs/services';
 import { TopUpCommand } from '@codesign/rxjs/commands';
 import { IBalance } from '@codesign/rxjs/interfaces';
-import { createAction } from '@codesign/rxjs/rxjs.helpers';
 
 @Component({
     selector: 'app-balance-widget',
@@ -13,17 +12,18 @@ import { createAction } from '@codesign/rxjs/rxjs.helpers';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BalanceWidgetComponent {
-    viewModel$ = combineLatest([this._balanceService.balance$]).pipe(
-        map(([balance]) => ({
-            balance,
-        }))
-    );
-
     actions = [
-        createAction(this._topUpCommand, (balance: IBalance) =>
-            this._topUpCommand.execute({ companyId: balance.companyId, amount: 100 })
-        ),
+        this._topUpCommand.build<IBalance>({
+            resolveParams: balance => ({
+                companyId: balance.companyId,
+                amount: 100,
+            }),
+        }),
     ];
+
+    viewModel$ = combineLatest([this._balanceService.balance$]).pipe(
+        map(([balance]) => ({ balance }))
+    );
 
     constructor(
         private readonly _balanceService: BalanceService,

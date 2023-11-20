@@ -1,50 +1,58 @@
-import { ICommand } from '@codesign/rxjs/interfaces';
-import { BehaviorSubject, Observable, finalize, take } from 'rxjs';
+import { ICommand, ICommandBuildConfig, IUIAction } from '@codesign/rxjs/interfaces';
+import { BehaviorSubject, Observable, finalize, isObservable, take } from 'rxjs';
 
-export abstract class Command implements ICommand {
+export abstract class Command<TParams> implements ICommand<TParams> {
     private _processing = new BehaviorSubject<boolean>(false);
 
     protected _icon: string;
-    protected _text: string;
-
-    get processing$(): Observable<boolean> {
-        return this._processing.asObservable();
-    }
+    protected _label: string;
 
     get icon(): string {
         return this._icon;
     }
 
-    get text(): string {
-        return this._text;
+    get label(): string {
+        return this._label;
     }
 
-    constructor(icon: string, text: string) {
+    constructor(icon: string, label: string) {
         this._icon = icon;
-        this._text = text;
+        this._label = label;
     }
 
-    abstract execute(params?: any): void;
-    abstract undo(params?: any): void;
+    abstract execute(params?: TParams): Observable<void> | void;
 
-    protected _performAsyncAction(config: {
-        observable: Observable<any>;
-        onComplete?: () => void;
-    }) {
-        if (this._processing.getValue()) {
-            return;
-        }
+    build<TEntity>(config: ICommandBuildConfig<TEntity, TParams>): IUIAction<TEntity> {
+        return {
+            icon: config.icon ?? this.icon,
+            label: config.label ?? this.label,
+            hidden: (entity: TEntity) => config.hidden?.(entity) || false,
+            disabled: (entity: TEntity) => config.disabled?.(entity) || false,
+            processing: () => this._processing.getValue() || false,
+            execute: (entity: TEntity) => {
+                const params = config.resolveParams(entity);
+                const result = this.execute(params);
 
-        this._processing.next(true);
+                if (this._processing.getValue()) {
+                    return;
+                }
 
-        config.observable
-            .pipe(
-                take(1),
-                finalize(() => {
-                    this._processing.next(false);
-                    config.onComplete?.();
-                })
-            )
-            .subscribe();
+                if (isObservable(result)) {
+                    this._processing.next(true);
+
+                    result
+                        .pipe(
+                            take(1),
+                            finalize(() => this._processing.next(false))
+                        )
+                        .subscribe({
+                            next: () => config.onSuccess?.(),
+                            error: () => config.onError?.(),
+                        });
+                } else {
+                    config.onSuccess?.();
+                }
+            },
+        };
     }
 }

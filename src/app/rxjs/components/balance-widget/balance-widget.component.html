@@ -1,10 +1,12 @@
 <ng-container *ngIf="viewModel$ | async; let viewModel; else: loadingTemplate">
-    <app-navbar-widget [cdkMenuTriggerFor]="menu" [loading]="viewModel.balance.processing">
+    <app-navbar-widget
+        [cdkMenuTriggerFor]="menu"
+        [loading]="viewModel.balance.processing">
         <mat-icon
             *ngIf="viewModel.balance.isBelowThreshold"
             class="animate-pulse text-icon-warning"
             icon="warning"></mat-icon>
-        {{ viewModel.balance.current | currency: viewModel.balance.currency : 'code' }}
+        {{ viewModel.balance.current | currency }}
         <mat-icon icon="arrow_drop_down"></mat-icon>
     </app-navbar-widget>
 
@@ -16,10 +18,7 @@
                 <div class="flex justify-between font-medium text-warning">
                     <span>Allocated:</span>
                     <span>
-                        {{
-                            viewModel.balance.allocated
-                                | currency: viewModel.balance.currency : 'code'
-                        }}
+                        {{ viewModel.balance.allocated | currency }}
                     </span>
                 </div>
                 <div class="text-small opacity-60">
@@ -28,14 +27,14 @@
                 </div>
             </div>
             <div class="balance-menu-items">
-                @for(action of actions; track action.text) {
-                    <button
+                @for(action of actions; track action.label) {
+                <button
                     class="balance-menu-item"
                     cdkMenuItem
                     (cdkMenuItemTriggered)="action.execute(viewModel.balance)">
-                        <mat-icon [icon]="action.icon"></mat-icon>
-                        {{ action.text }}
-                    </button>
+                    <mat-icon [icon]="action.icon"></mat-icon>
+                    {{ action.label }}
+                </button>
                 }
                 <button class="balance-menu-item" cdkMenuItem disabled>
                     <mat-icon icon="history"></mat-icon>

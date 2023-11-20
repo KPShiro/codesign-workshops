@@ -1,11 +1,8 @@
 import { Observable } from 'rxjs';
 
-export interface ICommand<T = any> {
-    processing$: Observable<boolean>;
-
+export interface ICommand<TParams> {
     icon: string;
-    text: string;
+    label: string;
 
-    execute(params?: T): void;
-    undo(params?: T): void;
+    execute(params?: TParams): Observable<void> | void;
 }

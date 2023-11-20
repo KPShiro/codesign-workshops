@@ -1,5 +1,4 @@
 import { Observable, filter } from 'rxjs';
-import { ICommand } from './interfaces';
 
 function isDefined<T>(value: T | null | undefined): value is T {
     return value !== null && value !== undefined;
@@ -16,13 +15,4 @@ export function randomizeNumber(min: number, max: number): number {
 
 export function randomizeDelay(): number {
     return randomizeNumber(100, 1000);
-}
-
-export function createAction<T = any>(command: ICommand, execute: (actor: T) => void) {
-    return {
-        icon: command.icon,
-        text: command.text,
-        processing$: command.processing$,
-        execute,
-    };
 }

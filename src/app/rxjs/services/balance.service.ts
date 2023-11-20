@@ -6,11 +6,13 @@ import {
     map,
     share,
     switchMap,
+    take,
     tap,
 } from 'rxjs';
 
 import { BalanceRestService, CompanyService } from '@codesign/rxjs/services';
 import { filterDefined } from '@codesign/rxjs/rxjs.helpers';
+import { Currency } from '@codesign/rxjs/enums';
 
 @Injectable()
 export class BalanceService {
@@ -40,12 +42,30 @@ export class BalanceService {
         }))
     );
 
+    get defaultCurrency(): string {
+        return Currency.EUR;
+    }
+
+    get currency(): string {
+        let value: string = this.defaultCurrency;
+
+        this.balance$.pipe(take(1)).subscribe(balance => {
+            value = balance.currency;
+        });
+
+        return value;
+    }
+
     constructor(
         private readonly _balanceRestService: BalanceRestService,
         private readonly _companyService: CompanyService
     ) {}
 
-    refreshBalance(): void {
+    setProcessing(processing: boolean): void {
+        this._processing.next(processing);
+    }
+
+    refreshData(): void {
         this._refresh.next(true);
     }
 }

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
-
-import { routes } from './rxjs.routes';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '@codesign/shared/shared.module';
+import { routes } from '@codesign/rxjs/rxjs.routes';
 import {
     IntroductionViewComponent,
     Exercise0ViewComponent,
@@ -23,24 +23,21 @@ import {
     CompanyWidgetComponent,
     NavbarComponent,
     NavbarWidgetComponent,
-    TopUpDialogComponent,
 } from '@codesign/rxjs/components';
-import { PayCommand, TopUpCommand } from '@codesign/rxjs/commands';
-import { ReactiveFormsModule } from '@angular/forms';
+import { TopUpCommand } from '@codesign/rxjs/commands';
+import { CodesignCurrencyPipe } from './pipes';
 
 const components = [
     NavbarWidgetComponent,
     BalanceWidgetComponent,
     CompanyWidgetComponent,
     NavbarComponent,
-    TopUpDialogComponent,
 ];
 
 const views = [IntroductionViewComponent, Exercise0ViewComponent];
-
 const angularCdk = [CdkMenu, CdkMenuItem, CdkMenuTrigger];
-
-const commands = [TopUpCommand, PayCommand];
+const commands = [TopUpCommand];
+const pipes = [CodesignCurrencyPipe];
 
 @NgModule({
     imports: [
@@ -50,7 +47,7 @@ const commands = [TopUpCommand, PayCommand];
         RouterModule.forChild(routes),
     ],
     exports: [RouterModule],
-    declarations: [...components, ...views],
+    declarations: [...components, ...views, ...pipes],
     providers: [
         BalanceRestService,
         CompanyRestService,
@@ -60,6 +57,7 @@ const commands = [TopUpCommand, PayCommand];
         UserRestService,
         BalanceService,
         ...commands,
+        ...pipes,
     ],
 })
 export class RxjsModule {

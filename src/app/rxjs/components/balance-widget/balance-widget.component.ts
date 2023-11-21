@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { combineLatest, map } from 'rxjs';
 
-import { BalanceService } from '@codesign/rxjs/services';
+import { BalanceStateService, CompanyStateService } from '@codesign/rxjs/services';
 import { TopUpCommand } from '@codesign/rxjs/commands';
-import { IBalance } from '@codesign/rxjs/interfaces';
+import { ICompany } from '@codesign/rxjs/interfaces';
 
 @Component({
     selector: 'app-balance-widget',
@@ -12,21 +12,35 @@ import { IBalance } from '@codesign/rxjs/interfaces';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BalanceWidgetComponent {
-    actions = [
-        this._topUpCommand.build<IBalance>({
-            resolveParams: balance => ({
-                companyId: balance.companyId,
+    protected viewModel$ = combineLatest([
+        this._balanceStateService.state$,
+        this._companyStateService.state$,
+    ]).pipe(
+        map(([, companyState]) => ({
+            company: companyState.activeCompany,
+            balance: {
+                currentAmount: this._balanceStateService.currentAmount,
+                allocatedAmount: this._balanceStateService.allocatedAmount,
+                thresholdAmount: this._balanceStateService.thresholdAmount,
+                currency: this._balanceStateService.currency,
+                processing: this._balanceStateService.processing,
+                showAllocatedWarning: this._balanceStateService.showAllocatedWarning,
+                showThresholdWarning: this._balanceStateService.showThresholdWarning,
+            },
+        }))
+    );
+
+    protected actions = [
+        inject(TopUpCommand).build<ICompany>({
+            resolveParams: company => ({
+                companyId: company.id,
                 amount: 100,
             }),
         }),
     ];
 
-    viewModel$ = combineLatest([this._balanceService.balance$]).pipe(
-        map(([balance]) => ({ balance }))
-    );
-
     constructor(
-        private readonly _balanceService: BalanceService,
-        private readonly _topUpCommand: TopUpCommand
+        private readonly _balanceStateService: BalanceStateService,
+        private readonly _companyStateService: CompanyStateService
     ) {}
 }

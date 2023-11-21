@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { combineLatest, map } from 'rxjs';
 
-import { CompanyService } from '@codesign/rxjs/services';
+import { CompanyStateService } from '@codesign/rxjs/services';
+import { SwitchCompanyCommand } from '@codesign/rxjs/commands';
+import { ICompany } from '@codesign/rxjs/interfaces';
 
 @Component({
     selector: 'app-company-widget',
@@ -10,21 +12,17 @@ import { CompanyService } from '@codesign/rxjs/services';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompanyWidgetComponent {
-    viewModel$ = combineLatest([
-        this._companyService.company$,
-        this._companyService.companies$,
-        this._companyService.processing$,
-    ]).pipe(
-        map(([company, companies, loading]) => ({
-            company,
-            companies,
-            loading,
+    viewModel$ = combineLatest([this._companyStateService.state$]).pipe(
+        map(() => ({
+            activeCompany: this._companyStateService.activeCompany,
+            linkedCompanies: this._companyStateService.linkedCompanies,
+            processing: this._companyStateService.processing,
         }))
     );
 
-    constructor(private readonly _companyService: CompanyService) {}
+    switchCompanyAction = inject(SwitchCompanyCommand).build<ICompany>({
+        resolveParams: company => ({ companyId: company.id }),
+    });
 
-    switchCompany(id: string): void {
-        this._companyService.switchCompany(id);
-    }
+    constructor(private readonly _companyStateService: CompanyStateService) {}
 }

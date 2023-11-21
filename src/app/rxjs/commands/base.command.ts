@@ -1,7 +1,7 @@
 import { ICommand, ICommandBuildConfig, IUIAction } from '@codesign/rxjs/interfaces';
 import { BehaviorSubject, Observable, finalize, isObservable, take } from 'rxjs';
 
-export abstract class Command<TParams> implements ICommand<TParams> {
+export abstract class Command<TParams = any> implements ICommand<TParams> {
     private _processing = new BehaviorSubject<boolean>(false);
 
     protected _icon: string;

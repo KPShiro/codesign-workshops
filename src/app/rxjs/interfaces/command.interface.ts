@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-export interface ICommand<TParams> {
+export interface ICommand<TParams = any> {
     icon: string;
     label: string;
 

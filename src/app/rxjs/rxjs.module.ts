@@ -11,9 +11,9 @@ import {
 } from '@codesign/rxjs/views';
 import {
     BalanceRestService,
-    BalanceService,
+    BalanceStateService,
     CompanyRestService,
-    CompanyService,
+    CompanyStateService,
     LocationRestService,
     RequestRestService,
     UserRestService,
@@ -24,8 +24,12 @@ import {
     NavbarComponent,
     NavbarWidgetComponent,
 } from '@codesign/rxjs/components';
-import { TopUpCommand } from '@codesign/rxjs/commands';
-import { CodesignCurrencyPipe } from './pipes';
+import {
+    RefreshBalanceCommand,
+    SwitchCompanyCommand,
+    TopUpCommand,
+} from '@codesign/rxjs/commands';
+import { CodesignCurrencyPipe } from '@codesign/rxjs/pipes';
 
 const components = [
     NavbarWidgetComponent,
@@ -36,7 +40,7 @@ const components = [
 
 const views = [IntroductionViewComponent, Exercise0ViewComponent];
 const angularCdk = [CdkMenu, CdkMenuItem, CdkMenuTrigger];
-const commands = [TopUpCommand];
+const commands = [TopUpCommand, RefreshBalanceCommand, SwitchCompanyCommand];
 const pipes = [CodesignCurrencyPipe];
 
 @NgModule({
@@ -50,18 +54,18 @@ const pipes = [CodesignCurrencyPipe];
     declarations: [...components, ...views, ...pipes],
     providers: [
         BalanceRestService,
+        BalanceStateService,
         CompanyRestService,
-        CompanyService,
+        CompanyStateService,
         LocationRestService,
         RequestRestService,
         UserRestService,
-        BalanceService,
         ...commands,
         ...pipes,
     ],
 })
 export class RxjsModule {
-    constructor(private readonly _companyService: CompanyService) {
-        this._companyService.switchCompany('0');
+    constructor(private readonly _switchCompanyCommand: SwitchCompanyCommand) {
+        this._switchCompanyCommand.execute({ companyId: '0' }).subscribe();
     }
 }

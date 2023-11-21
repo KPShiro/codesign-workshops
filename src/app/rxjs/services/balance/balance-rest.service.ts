@@ -34,7 +34,7 @@ export class BalanceRestService {
         return of({ ...entity }).pipe(delay(randomizeDelay()));
     }
 
-    addAmount(companyId: string, amount: number): Observable<void> {
+    addAmount(companyId: string, amount: number): Observable<IBalance> {
         const entity = this._data.find(item => item.companyId === companyId);
 
         if (entity === undefined) {
@@ -43,10 +43,10 @@ export class BalanceRestService {
 
         entity.current += amount;
 
-        return of(undefined).pipe(delay(randomizeDelay()));
+        return this.getByCompanyId(companyId);
     }
 
-    removeAmount(companyId: string, amount: number): Observable<void> {
+    removeAmount(companyId: string, amount: number): Observable<IBalance> {
         const entity = this._data.find(item => item.companyId === companyId);
 
         if (entity === undefined) {
@@ -59,6 +59,6 @@ export class BalanceRestService {
 
         entity.current -= amount;
 
-        return of(undefined).pipe(delay(randomizeDelay()));
+        return this.getByCompanyId(companyId);
     }
 }

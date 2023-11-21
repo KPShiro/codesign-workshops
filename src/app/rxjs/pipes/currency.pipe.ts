@@ -1,12 +1,11 @@
 import { CurrencyPipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
-import { BalanceService } from '@codesign/rxjs/services';
 
 @Pipe({
     name: 'appCurrency',
 })
 export class CodesignCurrencyPipe extends CurrencyPipe implements PipeTransform {
-    constructor(private readonly _balanceService: BalanceService) {
+    constructor() {
         // TODO: Get locales from the logged in user
         super((navigator && navigator.language) || 'en', 'EUR');
     }
@@ -45,6 +44,6 @@ export class CodesignCurrencyPipe extends CurrencyPipe implements PipeTransform 
             );
         }
 
-        return super.transform(value, this._balanceService.currency, 'code', '1.2-2');
+        return super.transform(value, 'EUR', 'code', '1.2-2');
     }
 }

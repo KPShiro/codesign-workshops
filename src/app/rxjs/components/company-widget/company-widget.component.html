@@ -1,30 +1,22 @@
-<ng-container *ngIf="viewModel$ | async; let viewModel; else: loadingTemplate">
-    <app-navbar-widget [cdkMenuTriggerFor]="menu" [loading]="viewModel.loading">
-        {{ viewModel.company.name }}
-        <mat-icon icon="arrow_drop_down"></mat-icon>
-    </app-navbar-widget>
+@if (viewModel$ | async; as viewModel) {
+@if(viewModel.activeCompany){
+<app-navbar-widget [cdkMenuTriggerFor]="menu" [loading]="viewModel.processing">
+    {{ viewModel.activeCompany.name }}
+    <mat-icon icon="arrow_drop_down"></mat-icon>
+</app-navbar-widget>
 
-    <ng-template #menu>
-        <div class="example-menu" cdkMenu>
-            <ng-container *ngFor="let company of viewModel.companies.data">
-                <button
-                    class="example-menu-item"
-                    [ngClass]="{
-                        'example-menu-item--selected':
-                            viewModel.company.id === company.id
-                    }"
-                    cdkMenuItem
-                    (cdkMenuItemTriggered)="switchCompany(company.id)">
-                    <span>{{ company.name }}</span>
-                    <span>{{ company.email }}</span>
-                </button>
-            </ng-container>
-        </div>
-    </ng-template>
-</ng-container>
-
-<ng-template #loadingTemplate>
-    <app-navbar-widget [disabled]="true">
-        <app-spinner></app-spinner>
-    </app-navbar-widget>
+<ng-template #menu>
+    <div class="example-menu" cdkMenu>
+        @for(company of viewModel.linkedCompanies; track company.id) {
+        <button class="example-menu-item" [ngClass]="{
+                                    'example-menu-item--selected':
+                                        viewModel.activeCompany.id === company.id
+                                }" cdkMenuItem (cdkMenuItemTriggered)="switchCompanyAction.execute(company)">
+            <span>{{ company.name }}</span>
+            <span>{{ company.email }}</span>
+        </button>
+        }
+    </div>
 </ng-template>
+}
+}

@@ -4,24 +4,23 @@ import { Observable, catchError, of, take, tap } from 'rxjs';
 import { BalanceRestService, BalanceStateService } from '@codesign/rxjs/services';
 import { Command } from '@codesign/rxjs/commands';
 
-interface ITopUpCommandParams {
+interface IRefreshBalanceCommandParams {
     companyId: string;
-    amount: number;
 }
 
 @Injectable()
-export class TopUpCommand extends Command<ITopUpCommandParams> {
+export class RefreshBalanceCommand extends Command {
     constructor(
         private readonly _balanceRestService: BalanceRestService,
         private readonly _balanceStateService: BalanceStateService
     ) {
-        super('add', 'Top up balance');
+        super('refresh', 'Refresh balance');
     }
 
-    execute(params: ITopUpCommandParams): Observable<void> {
+    execute(params: IRefreshBalanceCommandParams): Observable<void> {
         this._balanceStateService.setProcessing(true);
 
-        return this._balanceRestService.addAmount(params.companyId, params.amount).pipe(
+        return this._balanceRestService.getByCompanyId(params.companyId).pipe(
             take(1),
             tap(balance => {
                 this._balanceStateService.setBalance(balance);

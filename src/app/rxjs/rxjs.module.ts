@@ -29,7 +29,6 @@ import {
     SwitchCompanyCommand,
     TopUpCommand,
 } from '@codesign/rxjs/commands';
-import { CodesignCurrencyPipe } from '@codesign/rxjs/pipes';
 
 const components = [
     NavbarWidgetComponent,
@@ -41,7 +40,6 @@ const components = [
 const views = [IntroductionViewComponent, Exercise0ViewComponent];
 const angularCdk = [CdkMenu, CdkMenuItem, CdkMenuTrigger];
 const commands = [TopUpCommand, RefreshBalanceCommand, SwitchCompanyCommand];
-const pipes = [CodesignCurrencyPipe];
 
 @NgModule({
     imports: [
@@ -51,7 +49,7 @@ const pipes = [CodesignCurrencyPipe];
         RouterModule.forChild(routes),
     ],
     exports: [RouterModule],
-    declarations: [...components, ...views, ...pipes],
+    declarations: [...components, ...views],
     providers: [
         BalanceRestService,
         BalanceStateService,
@@ -61,7 +59,6 @@ const pipes = [CodesignCurrencyPipe];
         RequestRestService,
         UserRestService,
         ...commands,
-        ...pipes,
     ],
 })
 export class RxjsModule {

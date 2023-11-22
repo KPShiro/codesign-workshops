@@ -2,51 +2,24 @@
     @apply flex h-screen w-screen overflow-hidden;
 }
 
-.sidenav {
+.navbar {
     @apply relative flex-shrink-0 flex flex-col border-r border-default bg-surface-default w-64 overflow-y-auto;
 }
 
-.sidenav__header {
+.navbar__header {
     @apply sticky top-0 text-center p-6 bg-surface-default border-b border-default;
 }
 
-.sidenav__groups {
-    @apply py-8 px-6;
+.navbar__content {
+    @apply flex flex-col p-6;
 }
 
-.sidenav-group {
-    @apply flex flex-col gap-2;
+.navbar-link-group:nth-child(1) {
+    @apply pb-4;
 }
 
-.sidenav-group:not(:first-child)::before {
-    content: '';
-    @apply block my-6 border-t border-default;
-}
-
-.sidenav-group__title {
-    @apply flex-1 flex items-center font-semibold text-h500 justify-between text-default;
-}
-
-.sidenav-group__children {
-    @apply flex flex-col;
-}
-
-.sidenav-link {
-    @apply flex-1 flex justify-between items-center py-2 px-3 cursor-pointer;
-}
-
-.sidenav-link:not(.sidenav-link--active) {
-    @apply cursor-pointer text-subtle hover:text-default;
-}
-
-.sidenav-link--active {
-    @apply text-brand rounded bg-brand-default;
-}
-
-.sidenav-link__children {
-    @apply flex flex-col;
-}
-
-.sidenav-link__children > .sidenav-link {
-    @apply pl-6;
+.navbar-link-group + .navbar-link-group {
+    & {
+        @apply block border-t border-default py-4;
+    }
 }

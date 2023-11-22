@@ -12,6 +12,10 @@ export interface INavbarLinkGroup {
     selector: 'app-navbar-link-group',
     templateUrl: 'navbar-link-group.component.html',
     styleUrls: ['navbar-link-group.component.scss'],
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+        class: 'navbar-link-group',
+    },
 })
 export class NavbarLinkGroupComponent implements OnInit, OnDestroy {
     private _destroyed = new Subject<void>();

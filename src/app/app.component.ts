@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import { INavbarLink } from '@codesign/shared/components';
-
-interface NavLinkGroup {
-    label: string;
-    children: INavbarLink[];
-}
+import { INavbarLinkGroup } from '@codesign/shared/components';
 
 @Component({
     selector: 'app-root',
@@ -12,7 +7,7 @@ interface NavLinkGroup {
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-    navLinksGroups: NavLinkGroup[] = [
+    navLinksGroups: INavbarLinkGroup[] = [
         {
             label: 'RxJS',
             children: [

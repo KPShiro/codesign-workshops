@@ -1,5 +1,5 @@
-<div class="sidenav">
-    <div class="sidenav__header">
+<div class="navbar">
+    <div class="navbar__header">
         <span>
             <span class="font-bold text-brand">
                 Codesign
@@ -7,7 +7,7 @@
             Workshops
         </span>
     </div>
-    <div class="sidenav__groups">
+    <div class="navbar__content">
         @for(group of navLinksGroups; track group.label) {
         <app-navbar-link-group [group]="group"></app-navbar-link-group>
         }

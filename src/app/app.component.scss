@@ -3,33 +3,50 @@
 }
 
 .sidenav {
-    @apply flex-shrink-0 flex flex-col p-4 border-r border-default bg-surface-default w-64;
+    @apply relative flex-shrink-0 flex flex-col border-r border-default bg-surface-default w-64 overflow-y-auto;
 }
 
-.sidenav__separator {
-    @apply block my-4 border-t border-default;
+.sidenav__header {
+    @apply sticky top-0 text-center p-6 bg-surface-default border-b border-default;
 }
 
-.sidenav__links {
+.sidenav__groups {
+    @apply py-8 px-6;
+}
+
+.sidenav-group {
     @apply flex flex-col gap-2;
 }
 
-.sidenav-item {
-    @apply relative flex-shrink-0 flex items-center justify-between px-4 h-12 rounded text-button font-button leading-button text-subtle border border-brand hover:bg-surface-hovered active:bg-surface-pressed;
+.sidenav-group:not(:first-child)::before {
+    content: '';
+    @apply block my-6 border-t border-default;
 }
 
-.sidenav-item + .sidenav-item {
-    @apply border-t-0;
+.sidenav-group__title {
+    @apply flex-1 flex items-center font-semibold text-h500 justify-between text-default;
 }
 
-.sidenav-item.sidenav-item--active {
-    @apply bg-brand-default text-default;
+.sidenav-group__children {
+    @apply flex flex-col;
 }
 
-.sidenav-item__children {
-    @apply flex flex-shrink-0 flex-col border border-brand rounded overflow-hidden;
+.sidenav-link {
+    @apply flex-1 flex justify-between items-center py-2 px-3 cursor-pointer;
 }
 
-.sidenav-item__children > .sidenav-item {
-    @apply rounded-none border-transparent;
+.sidenav-link:not(.sidenav-link--active) {
+    @apply cursor-pointer text-subtle hover:text-default;
+}
+
+.sidenav-link--active {
+    @apply text-brand rounded bg-brand-default;
+}
+
+.sidenav-link__children {
+    @apply flex flex-col;
+}
+
+.sidenav-link__children > .sidenav-link {
+    @apply pl-6;
 }

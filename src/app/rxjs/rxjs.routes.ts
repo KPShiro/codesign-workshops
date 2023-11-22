@@ -13,6 +13,16 @@ export const routes: Routes = [
     },
     {
         path: 'subjects',
-        component: SubjectsViewComponent,
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                component: SubjectsViewComponent,
+            },
+            {
+                path: '**',
+                redirectTo: '',
+            },
+        ],
     },
 ];

@@ -1,0 +1,20 @@
+<div class="navbar-link" [routerLink]="[link.path]" routerLinkActive="navbar-link--active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <div>
+        {{ link.label }}
+    </div>
+
+    @if (hasChildren){
+    <div class="navbar-link__toggle" (click)="toggle()">
+        <mat-icon [icon]="isExpanded ? 'remove' : 'add'"></mat-icon>
+    </div>
+    }
+</div>
+
+@if(isExpanded){
+<div class="ml-6">
+    @for(child of link.children; track child.label) {
+    <app-navbar-link [link]="child"></app-navbar-link>
+    }
+</div>
+}

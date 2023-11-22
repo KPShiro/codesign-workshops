@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
+import { INavbarLink } from '@codesign/shared/components';
 
-interface NavLink {
-    title: string;
-    path: string;
-    children?: NavLink[];
+interface NavLinkGroup {
+    label: string;
+    children: INavbarLink[];
 }
 
 @Component({
@@ -12,24 +12,37 @@ interface NavLink {
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-    navLinks: NavLink[] = [
+    navLinksGroups: NavLinkGroup[] = [
         {
-            title: 'RxJS',
-            path: '/rxjs',
+            label: 'RxJS',
             children: [
                 {
-                    title: 'Introduction',
+                    label: 'Introduction',
                     path: '/rxjs/introduction',
                 },
                 {
-                    title: 'Subjects',
+                    label: 'Subjects',
                     path: '/rxjs/subjects',
+                    children: [
+                        {
+                            label: 'Subject',
+                            path: '/rxjs/subjects/subject',
+                        },
+                        {
+                            label: 'ReplySubject',
+                            path: '/rxjs/subjects/reply-subject',
+                        },
+                        {
+                            label: 'BehaviorSubject',
+                            path: '/rxjs/subjects/behavior-subject',
+                        },
+                        {
+                            label: 'AsyncSubject',
+                            path: '/rxjs/subjects/async-subject',
+                        },
+                    ],
                 },
             ],
         },
     ];
-
-    isOpened(navbarLink: HTMLElement): boolean {
-        return navbarLink.classList.contains('sidenav-item--active');
-    }
 }

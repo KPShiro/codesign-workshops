@@ -15,17 +15,21 @@
 }
 
 .sidenav-item {
-    @apply relative flex-shrink-0 flex items-center justify-between px-4 h-12 rounded text-button font-button leading-button hover:bg-surface-hovered active:bg-surface-pressed;
+    @apply relative flex-shrink-0 flex items-center justify-between px-4 h-12 rounded text-button font-button leading-button text-subtle border border-brand hover:bg-surface-hovered active:bg-surface-pressed;
+}
+
+.sidenav-item + .sidenav-item {
+    @apply border-t-0;
 }
 
 .sidenav-item.sidenav-item--active {
-    @apply bg-brand-default text-brand;
+    @apply bg-brand-default text-default;
 }
 
 .sidenav-item__children {
-    @apply flex flex-shrink-0 flex-col rounded overflow-hidden border border-default;
+    @apply flex flex-shrink-0 flex-col border border-brand rounded overflow-hidden;
 }
 
 .sidenav-item__children > .sidenav-item {
-    @apply rounded-none;
+    @apply rounded-none border-transparent;
 }

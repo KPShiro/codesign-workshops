@@ -7,7 +7,7 @@ import { SharedModule } from '@codesign/shared/shared.module';
 import { routes } from '@codesign/rxjs/rxjs.routes';
 import {
     IntroductionViewComponent,
-    Exercise0ViewComponent,
+    SubjectsViewComponent,
 } from '@codesign/rxjs/views';
 import {
     BalanceRestService,
@@ -37,7 +37,7 @@ const components = [
     NavbarComponent,
 ];
 
-const views = [IntroductionViewComponent, Exercise0ViewComponent];
+const views = [IntroductionViewComponent, SubjectsViewComponent];
 const angularCdk = [CdkMenu, CdkMenuItem, CdkMenuTrigger];
 const commands = [TopUpCommand, RefreshBalanceCommand, SwitchCompanyCommand];
 

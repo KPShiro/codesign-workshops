@@ -45,9 +45,9 @@
         --color-background-brand-hovered: #{variables.$color-blue-900};
         --color-background-brand-pressed: #{variables.$color-blue-800};
 
-        --color-background-brand-bold-default: #{variables.$color-blue-500};
-        --color-background-brand-bold-hovered: #{variables.$color-blue-400};
-        --color-background-brand-bold-pressed: #{variables.$color-blue-300};
+        --color-background-brand-bold-default: #{variables.$color-blue-600};
+        --color-background-brand-bold-hovered: #{variables.$color-blue-500};
+        --color-background-brand-bold-pressed: #{variables.$color-blue-400};
 
         --color-background-danger-default: #{variables.$color-red-1000};
         --color-background-danger-hovered: #{variables.$color-red-900};
@@ -73,23 +73,23 @@
         --color-background-success-bold-hovered: #{variables.$color-green-300};
         --color-background-success-bold-pressed: #{variables.$color-green-200};
 
-        --color-background-info-default: #{variables.$color-blue-1000};
-        --color-background-info-hovered: #{variables.$color-blue-900};
-        --color-background-info-pressed: #{variables.$color-blue-800};
+        --color-background-info-default: #{variables.$color-blue-900};
+        --color-background-info-hovered: #{variables.$color-blue-800};
+        --color-background-info-pressed: #{variables.$color-blue-700};
 
-        --color-background-info-bold-default: #{variables.$color-blue-400};
-        --color-background-info-bold-hovered: #{variables.$color-blue-300};
-        --color-background-info-bold-pressed: #{variables.$color-blue-200};
+        --color-background-info-bold-default: #{variables.$color-blue-500};
+        --color-background-info-bold-hovered: #{variables.$color-blue-400};
+        --color-background-info-bold-pressed: #{variables.$color-blue-300};
 
         /* Border */
         --color-border-default: #{variables.$color-neutralDark-alpha-200};
         --color-border-focused: #{variables.$color-neutralDark-alpha-500};
         --color-border-disabled: #{variables.$color-neutralDark-alpha-200};
-        --color-border-brand: #{variables.$color-blue-500};
+        --color-border-brand: #{variables.$color-blue-900};
         --color-border-danger: #{variables.$color-red-500};
         --color-border-warning: #{variables.$color-orange-500};
         --color-border-success: #{variables.$color-green-500};
-        --color-border-info: #{variables.$color-blue-500};
+        --color-border-info: #{variables.$color-blue-900};
 
         /* Icon (.text-icon-*) */
         --color-icon-default: #{variables.$color-neutralDark-solid-700};
@@ -97,15 +97,15 @@
         --color-icon-subtlest: #{variables.$color-neutralDark-solid-350};
         --color-icon-inversed: #{variables.$color-neutralDark-solid-0};
         --color-icon-disabled: #{variables.$color-neutralDark-alpha-400};
-        --color-icon-brand: #{variables.$color-blue-500};
+        --color-icon-brand: #{variables.$color-blue-600};
         --color-icon-danger: #{variables.$color-red-500};
         --color-icon-warning: #{variables.$color-orange-500};
         --color-icon-success: #{variables.$color-green-500};
         --color-icon-info: #{variables.$color-blue-500};
 
         /* Link (.text-link-*) */
-        --color-link-default: #{variables.$color-blue-500};
-        --color-link-pressed: #{variables.$color-blue-400};
+        --color-link-default: #{variables.$color-blue-600};
+        --color-link-pressed: #{variables.$color-blue-500};
 
         /* Text */
         --color-text-default: #{variables.$color-neutralDark-solid-1000};
@@ -113,11 +113,11 @@
         --color-text-subtlest: #{variables.$color-neutralDark-solid-500};
         --color-text-inversed: #{variables.$color-neutralDark-solid-0};
         --color-text-disabled: #{variables.$color-neutralDark-alpha-400};
-        --color-text-brand: #{variables.$color-blue-500};
+        --color-text-brand: #{variables.$color-blue-600};
         --color-text-danger: #{variables.$color-red-300};
         --color-text-warning: #{variables.$color-orange-300};
         --color-text-success: #{variables.$color-green-300};
-        --color-text-info: #{variables.$color-blue-300};
+        --color-text-info: #{variables.$color-blue-500};
 
         /* Text (accent) */
         --color-text-accent-red-default: #{variables.$color-red-300};
@@ -128,8 +128,8 @@
         --color-text-accent-yellow-bolder: #{variables.$color-yellow-200};
         --color-text-accent-green-default: #{variables.$color-green-300};
         --color-text-accent-green-bolder: #{variables.$color-green-200};
-        --color-text-accent-blue-default: #{variables.$color-blue-300};
-        --color-text-accent-blue-bolder: #{variables.$color-blue-200};
+        --color-text-accent-blue-default: #{variables.$color-blue-400};
+        --color-text-accent-blue-bolder: #{variables.$color-blue-300};
         --color-text-accent-purple-default: #{variables.$color-purple-300};
         --color-text-accent-purple-bolder: #{variables.$color-purple-200};
     }

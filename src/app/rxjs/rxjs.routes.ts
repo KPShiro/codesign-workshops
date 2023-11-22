@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Exercise0ViewComponent, IntroductionViewComponent } from './views';
+import { SubjectsViewComponent, IntroductionViewComponent } from './views';
 
 export const routes: Routes = [
     {
@@ -12,12 +12,7 @@ export const routes: Routes = [
         component: IntroductionViewComponent,
     },
     {
-        path: 'exercise',
-        children: [
-            {
-                path: '0',
-                component: Exercise0ViewComponent,
-            },
-        ],
+        path: 'subjects',
+        component: SubjectsViewComponent,
     },
 ];

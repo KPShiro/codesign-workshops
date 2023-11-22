@@ -28,21 +28,28 @@ h3 {
     @apply text-h400 font-semibold;
 }
 
-.text-section {
-    @apply flex flex-col gap-3 max-w-xl;
+a {
+    @apply underline text-link-default active:text-link-pressed;
+}
 
-    p {
-        @apply text-subtle;
-    }
+blockquote {
+    @apply relative flex flex-col gap-4 italic py-3 px-6 border-l-4 border-default text-subtle;
 }
 
 code {
-    @apply relative text-small px-1.5;
+    @apply border border-default rounded p-4 text-default text-base font-sans;
+}
 
-    &::before {
-        content: '';
-        @apply absolute -z-10 bg-inversed-default border border-default left-0 right-0 -top-0.5 -bottom-0.5 rounded;
-    }
+hr {
+    @apply border-default;
+}
+
+article {
+    @apply flex flex-col gap-2;
+}
+
+article > p {
+    @apply text-subtle;
 }
 
 .cdk-dialog-container {

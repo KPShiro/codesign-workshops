@@ -1,4 +1,4 @@
-export interface ICommandBuildConfig<TEntity, TParams> {
+export interface ICommandConfig<TEntity, TParams> {
     icon?: string;
     label?: string;
     resolveParams: (entity: TEntity) => TParams;

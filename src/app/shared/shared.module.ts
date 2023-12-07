@@ -10,8 +10,8 @@ import {
     SpinnerComponent,
 } from '@codesign/shared/components';
 
-const modules: any = [CommonModule];
-const components: any = [
+const modules = [CommonModule];
+const components = [
     ButtonComponent,
     MatIconComponent,
     NavbarLinkComponent,

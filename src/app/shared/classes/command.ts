@@ -1,5 +1,5 @@
-import { ICommand, ICommandBuildConfig, IUIAction } from '@codesign/rxjs/interfaces';
 import { BehaviorSubject, Observable, finalize, isObservable, take } from 'rxjs';
+import { ICommand, ICommandConfig, IAction } from '@codesign/shared/interfaces';
 
 export abstract class Command<TParams = any> implements ICommand<TParams> {
     private _processing = new BehaviorSubject<boolean>(false);
@@ -22,7 +22,7 @@ export abstract class Command<TParams = any> implements ICommand<TParams> {
 
     abstract execute(params?: TParams): Observable<void> | void;
 
-    build<TEntity>(config: ICommandBuildConfig<TEntity, TParams>): IUIAction<TEntity> {
+    build<TEntity>(config: ICommandConfig<TEntity, TParams>): IAction<TEntity> {
         return {
             icon: config.icon ?? this.icon,
             label: config.label ?? this.label,
@@ -31,11 +31,12 @@ export abstract class Command<TParams = any> implements ICommand<TParams> {
             processing: () => this._processing.getValue() || false,
             execute: (entity: TEntity) => {
                 const params = config.resolveParams(entity);
-                const result = this.execute(params);
 
                 if (this._processing.getValue()) {
                     return;
                 }
+
+                const result = this.execute(params);
 
                 if (isObservable(result)) {
                     this._processing.next(true);

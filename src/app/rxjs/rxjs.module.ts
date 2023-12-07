@@ -5,10 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '@codesign/shared/shared.module';
 import { routes } from '@codesign/rxjs/rxjs.routes';
-import {
-    IntroductionViewComponent,
-    SubjectsViewComponent,
-} from '@codesign/rxjs/views';
+import { IntroductionViewComponent, SubjectsViewComponent } from '@codesign/rxjs/views';
 import {
     BalanceRestService,
     BalanceStateService,

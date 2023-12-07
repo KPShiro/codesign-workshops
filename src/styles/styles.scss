@@ -25,7 +25,7 @@ h2 {
 }
 
 h3 {
-    @apply text-h400 font-semibold;
+    @apply text-h300 font-semibold;
 }
 
 a {
@@ -36,10 +36,6 @@ blockquote {
     @apply relative flex flex-col gap-4 italic py-3 px-6 border-l-4 border-default text-subtle;
 }
 
-code {
-    @apply border border-default rounded p-4 text-default text-base font-sans;
-}
-
 hr {
     @apply border-default;
 }
@@ -48,7 +44,7 @@ article {
     @apply flex flex-col gap-2;
 }
 
-article > p {
+article>*:not(h1, h2, h3, h4, h5, h6) {
     @apply text-subtle;
 }
 

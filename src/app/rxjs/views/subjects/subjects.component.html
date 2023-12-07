@@ -25,7 +25,7 @@
     <hr>
 
     <article>
-        <h2>Subject vs Observable</h2>
+        <h2>Subject <i>vs</i> Observable</h2>
         <p>
             A regular Observable can only emit data but not receive it. Subject is capable of both emitting data and
             also receiving the data.
@@ -41,19 +41,19 @@
         </p>
         <ol class="list-decimal text-subtle pl-4 flex flex-col gap-2">
             <li>
-                <b>Subject</b>: This is the basic type. It allows values to be multicasted to many Observers. When a
+                <a href="/rxjs/subjects/subject">Subject</a>: This is the basic type. It allows values to be multicasted to many Observers. When a
                 value is emitted, it will be passed to all the subscribers.
             </li>
             <li>
-                <b>ReplaySubject</b>: This variant of Subject records multiple values from the Observable execution and
+                <a href="/rxjs/subjects/reply-subject">ReplySubject</a>: This variant of Subject records multiple values from the Observable execution and
                 replays them to new subscribers.
             </li>
             <li>
-                <b>BehaviorSubject</b>: This is a variant of Subject that requires an initial value and emits its
+                <a href="/rxjs/subjects/behavior-subject">BehaviorSubject</a>: This is a variant of Subject that requires an initial value and emits its
                 current value (last emitted item) to new subscribers.
             </li>
             <li>
-                <b>AsyncSubject</b>: This is another variant of Subject, that emits the last value (and only the last
+                <a href="/rxjs/subjects/async-subject">AsyncSubject</a>: This is another variant of Subject, that emits the last value (and only the last
                 value) emitted by the source Observable, and only after that source Observable completes.
             </li>
         </ol>

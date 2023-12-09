@@ -1,11 +1,14 @@
-<div class="navbar-link" [routerLink]="[link.path]" routerLinkActive="navbar-link--active"
+<div
+    class="app-navbar-link"
+    [routerLink]="[link.path]"
+    routerLinkActive="app-navbar-link--active"
     [routerLinkActiveOptions]="{ exact: true }">
     <div>
         {{ link.label }}
     </div>
 
     @if (hasChildren){
-    <div class="navbar-link__toggle" (click)="toggle()">
+    <div class="app-navbar-link__toggle" (click)="toggle()">
         <mat-icon [icon]="isExpanded ? 'remove' : 'add'"></mat-icon>
     </div>
     }

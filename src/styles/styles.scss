@@ -12,6 +12,21 @@
 // App Themes
 @import './default-theme.scss';
 
+::-webkit-scrollbar {
+    width: theme('borderWidth.4');
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: theme('backgroundColor.surface.overlay.default');
+    -webkit-border-radius: 0;
+    -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
 body {
     @apply bg-surface-sunken-default text-default text-base;
 }
@@ -29,7 +44,7 @@ h3 {
 }
 
 a {
-    @apply underline text-link-default active:text-link-pressed;
+    @apply relative no-underline font-bold text-link-default hover:underline hover:text-link-pressed active:text-link-pressed;
 }
 
 blockquote {
@@ -44,7 +59,7 @@ article {
     @apply flex flex-col gap-2;
 }
 
-article>*:not(h1, h2, h3, h4, h5, h6) {
+article > *:not(h1, h2, h3, h4, h5, h6) {
     @apply text-subtle;
 }
 

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import {
     ButtonComponent,
     MatIconComponent,
+    NavbarComponent,
     NavbarLinkComponent,
     NavbarLinkGroupComponent,
     SpinnerComponent,
@@ -14,6 +15,7 @@ const modules = [CommonModule];
 const components = [
     ButtonComponent,
     MatIconComponent,
+    NavbarComponent,
     NavbarLinkComponent,
     NavbarLinkGroupComponent,
     SpinnerComponent,

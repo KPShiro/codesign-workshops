@@ -1,18 +1,6 @@
-<div class="navbar">
-    <div class="navbar__header">
-        <span>
-            <span class="font-bold text-brand">
-                Codesign
-            </span>
-            Workshops
-        </span>
-    </div>
-    <div class="navbar__content">
-        @for(group of navLinksGroups; track group.label) {
-        <app-navbar-link-group [group]="group"></app-navbar-link-group>
-        }
-    </div>
+<div class="app-navbar-wrapper">
+    <app-navbar></app-navbar>
 </div>
-<div class="flex-1 flex flex-col overflow-auto">
+<div class="app-content-wrapper">
     <router-outlet></router-outlet>
 </div>

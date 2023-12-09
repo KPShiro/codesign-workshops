@@ -1,0 +1,11 @@
+:host.app-navbar {
+    @apply w-full h-full flex flex-col border-r border-default bg-surface-sunken-default;
+}
+
+.app-navbar__header {
+    @apply text-center p-6 bg-surface-sunken-default hover:bg-surface-hovered active:bg-surface-pressed border-b border-default cursor-pointer select-none;
+}
+
+.app-navbar__content {
+    @apply flex flex-col overflow-y-auto;
+}

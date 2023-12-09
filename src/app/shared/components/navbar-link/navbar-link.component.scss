@@ -1,15 +1,15 @@
-.navbar-link {
-    @apply flex justify-between items-center gap-2 py-1 cursor-pointer select-none;
+.app-navbar-link {
+    @apply flex justify-between items-center gap-2 py-2 pl-4 border-l-2 border-default cursor-pointer select-none;
 }
 
-.navbar-link:not(.navbar-link--active) {
+.app-navbar-link:not(.app-navbar-link--active) {
     @apply text-subtle hover:text-default;
 }
 
-.navbar-link--active {
+.app-navbar-link--active {
     @apply text-brand border-brand;
 }
 
-.navbar-link__toggle {
+.app-navbar-link__toggle {
     @apply flex items-center justify-center gap-2 bg-inversed-default rounded text-default border border-default w-4 h-4;
 }

@@ -1,25 +1,11 @@
 :host {
-    @apply flex h-screen w-screen overflow-hidden;
+    @apply flex min-h-screen;
 }
 
-.navbar {
-    @apply relative flex-shrink-0 flex flex-col border-r border-default bg-surface-default w-64 overflow-y-auto;
+.app-navbar-wrapper {
+    @apply sticky top-0 flex flex-col flex-shrink-0 w-64 h-screen;
 }
 
-.navbar__header {
-    @apply sticky top-0 text-center p-6 bg-surface-default border-b border-default;
-}
-
-.navbar__content {
-    @apply flex flex-col p-6;
-}
-
-.navbar-link-group:nth-child(1) {
-    @apply pb-4;
-}
-
-.navbar-link-group + .navbar-link-group {
-    & {
-        @apply block border-t border-default py-4;
-    }
+.app-content-wrapper {
+    @apply flex flex-col w-full min-h-screen;
 }

@@ -1,17 +1,21 @@
 .app-button {
-    @apply inline-flex items-center justify-center px-3 h-button-md rounded border-2 border-transparent bg-inversed-default enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed disabled:bg-disabled disabled:text-disabled disabled:cursor-default text-center text-button leading-button font-button text-default whitespace-nowrap cursor-pointer select-none;
+    @apply inline-flex items-center py-[0.5em] px-[0.875em] rounded border-2 border-transparent font-semibold whitespace-nowrap select-none cursor-pointer disabled:bg-disabled disabled:text-disabled disabled:cursor-default;
 }
 
 .app-button[size='sm'] {
-    @apply px-2 h-button-sm rounded-[3px] text-button-small leading-button-small;
+    @apply text-xs;
+}
+
+.app-button[size='md'] {
+    @apply text-base;
 }
 
 .app-button-wrapper {
-    @apply inline-flex items-center justify-center gap-3;
+    @apply flex-1 inline-flex items-center justify-center gap-[0.75em];
 }
 
-.app-button[size='sm'] .app-button-wrapper {
-    @apply gap-2;
+.app-button[variant='neutral'] {
+    @apply enabled:bg-inversed-default enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed enabled:text-default;
 }
 
 .app-button[variant='primary'] {
@@ -19,9 +23,9 @@
 }
 
 .app-button[variant='outlined'] {
-    @apply enabled:bg-transparent enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed enabled:border-default;
+    @apply enabled:bg-transparent enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed enabled:text-default enabled:border-default;
 }
 
 .app-button[variant='text'] {
-    @apply enabled:bg-transparent enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed;
+    @apply enabled:bg-transparent enabled:hover:bg-inversed-hovered enabled:active:bg-inversed-pressed enabled:text-default;
 }

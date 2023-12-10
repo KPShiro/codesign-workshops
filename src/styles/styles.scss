@@ -31,16 +31,37 @@ body {
     @apply bg-surface-sunken-default text-default text-base;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply leading-normal font-semibold text-default;
+}
+
 h1 {
-    @apply text-h700 font-semibold;
+    @apply text-h1;
 }
 
 h2 {
-    @apply text-h500 font-semibold;
+    @apply text-h2;
 }
 
 h3 {
-    @apply text-h300 font-semibold;
+    @apply text-h3;
+}
+
+h4 {
+    @apply text-h4;
+}
+
+h5 {
+    @apply text-h5;
+}
+
+h6 {
+    @apply text-h6;
 }
 
 a {
@@ -52,15 +73,23 @@ blockquote {
 }
 
 hr {
-    @apply border-default;
+    @apply w-full border-default;
 }
 
-article {
-    @apply flex flex-col gap-2;
+code {
+    @apply relative font-mono font-medium text-default bg-inversed-default rounded px-[0.3em] py-[0.1em];
 }
 
-article > *:not(h1, h2, h3, h4, h5, h6) {
-    @apply text-subtle;
+section {
+    @apply flex flex-col gap-2 text-subtle;
+}
+
+ul {
+    @apply list-disc list-outside pl-6;
+}
+
+li + li {
+    @apply mt-1;
 }
 
 .cdk-dialog-container {

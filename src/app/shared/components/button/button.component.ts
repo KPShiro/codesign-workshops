@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
@@ -13,8 +13,10 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 })
 export class ButtonComponent {
     @Input()
+    @HostBinding('attr.variant')
     variant: 'neutral' | 'primary' | 'outlined' | 'text' = 'neutral';
 
     @Input()
+    @HostBinding('attr.size')
     size: 'sm' | 'md' = 'md';
 }

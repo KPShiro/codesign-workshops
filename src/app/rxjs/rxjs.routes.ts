@@ -1,27 +1,37 @@
 import { Routes } from '@angular/router';
-import { SubjectsViewComponent, IntroductionViewComponent } from './views';
+import {
+    Exercise0ViewComponent,
+    Exercise1ViewComponent,
+    ExerciseWrapperViewComponent,
+} from './views';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'introduction',
+        redirectTo: 'exercises',
         pathMatch: 'full',
     },
     {
-        path: 'introduction',
-        component: IntroductionViewComponent,
-    },
-    {
-        path: 'subjects',
+        path: 'exercises',
+        component: ExerciseWrapperViewComponent,
         children: [
             {
                 path: '',
+                redirectTo: 'exercise-0',
                 pathMatch: 'full',
-                component: SubjectsViewComponent,
+            },
+            {
+                path: 'exercise-0',
+                component: Exercise0ViewComponent,
+            },
+            {
+                path: 'exercise-1',
+                component: Exercise1ViewComponent,
             },
             {
                 path: '**',
-                redirectTo: '',
+                redirectTo: 'exercise-0',
+                pathMatch: 'full',
             },
         ],
     },

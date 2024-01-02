@@ -9,18 +9,13 @@
 // Angular Material CDK
 @import '@angular/cdk/overlay-prebuilt.css';
 
-// App Themes
-@import './default-theme.scss';
-
 ::-webkit-scrollbar {
     width: theme('borderWidth.4');
     background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: theme('backgroundColor.surface.overlay.default');
-    -webkit-border-radius: 0;
-    -webkit-box-shadow: none;
+    background: theme('backgroundColor.neutral.800');
 }
 
 ::-webkit-scrollbar-corner {
@@ -28,7 +23,7 @@
 }
 
 body {
-    @apply bg-surface-sunken-default text-default text-base;
+    @apply bg-zinc-950 text-zinc-50;
 }
 
 h1,
@@ -37,61 +32,29 @@ h3,
 h4,
 h5,
 h6 {
-    @apply leading-normal font-semibold text-default;
+    @apply font-bold leading-snug;
 }
 
 h1 {
-    @apply text-h1;
+    @apply text-3xl;
 }
 
 h2 {
-    @apply text-h2;
+    @apply text-2xl;
 }
 
 h3 {
-    @apply text-h3;
+    @apply text-xl;
 }
 
 h4 {
-    @apply text-h4;
+    @apply text-lg;
 }
 
 h5 {
-    @apply text-h5;
+    @apply text-base;
 }
 
 h6 {
-    @apply text-h6;
-}
-
-a {
-    @apply relative no-underline font-bold text-link-default hover:underline hover:text-link-pressed active:text-link-pressed;
-}
-
-blockquote {
-    @apply relative flex flex-col gap-4 italic py-3 px-6 border-l-4 border-default text-subtle;
-}
-
-hr {
-    @apply w-full border-default;
-}
-
-code {
-    @apply relative font-mono font-medium text-default bg-inversed-default rounded px-[0.3em] py-[0.1em];
-}
-
-section {
-    @apply flex flex-col gap-2 text-subtle;
-}
-
-ul {
-    @apply list-disc list-outside pl-6;
-}
-
-li + li {
-    @apply mt-1;
-}
-
-.cdk-dialog-container {
-    @apply border border-default shadow rounded bg-surface-raised-default;
+    @apply text-sm;
 }

@@ -5,7 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '@codesign/shared/shared.module';
 import { routes } from '@codesign/rxjs/rxjs.routes';
-import { IntroductionViewComponent, SubjectsViewComponent } from '@codesign/rxjs/views';
+import {
+    Exercise0ViewComponent,
+    Exercise1ViewComponent,
+    ExerciseWrapperViewComponent,
+} from '@codesign/rxjs/views';
 
 const angularCdkModules = [CdkMenu, CdkMenuItem, CdkMenuTrigger];
 
@@ -19,6 +23,10 @@ const angularCdkModules = [CdkMenu, CdkMenuItem, CdkMenuTrigger];
         RouterModule.forChild(routes),
     ],
     exports: [RouterModule],
-    declarations: [IntroductionViewComponent, SubjectsViewComponent],
+    declarations: [
+        ExerciseWrapperViewComponent,
+        Exercise0ViewComponent,
+        Exercise1ViewComponent,
+    ],
 })
 export class RxjsModule {}

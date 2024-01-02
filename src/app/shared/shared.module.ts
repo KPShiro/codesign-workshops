@@ -2,24 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import {
-    ButtonComponent,
-    MatIconComponent,
-    NavbarComponent,
-    NavbarLinkComponent,
-    NavbarLinkGroupComponent,
-    SpinnerComponent,
-} from '@codesign/shared/components';
+import { MatIconComponent, SpinnerComponent } from '@codesign/shared/components';
 
 const modules = [CommonModule];
-const components = [
-    ButtonComponent,
-    MatIconComponent,
-    NavbarComponent,
-    NavbarLinkComponent,
-    NavbarLinkGroupComponent,
-    SpinnerComponent,
-];
+const components = [MatIconComponent, SpinnerComponent];
 
 @NgModule({
     imports: [RouterModule, ...modules],

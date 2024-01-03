@@ -1,21 +1,22 @@
 export default {
     preset: 'jest-preset-angular',
-    setupFilesAfterEnv: [
-        '<rootDir>/jest.setup.ts'
-    ],
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     testPathIgnorePatterns: [
         '<rootDir>/node_modules/',
         '<rootDir>/dist/',
-        '<rootDir>/e2e/'
+        '<rootDir>/e2e/',
     ],
-    globals: {
-        'ts-jest': {
-            tsconfig: '<rootDir>/tsconfig.spec.json',
-            stringifyContentPathRegex: '\\.html$'
-        }
+    transform: {
+        '^.+\\.spec.ts?$': [
+            'ts-jest',
+            {
+                tsconfig: '<rootDir>/tsconfig.spec.json',
+                stringifyContentPathRegex: '\\.html$',
+            },
+        ],
     },
     moduleNameMapper: {
-        "@codesign(.*)": "<rootDir>/src/app/$1",
-        "@assets(.*)": "<rootDir>/src/assets/$1",
-    }
+        '@codesign(.*)': '<rootDir>/src/app/$1',
+        '@assets(.*)': '<rootDir>/src/assets/$1',
+    },
 };

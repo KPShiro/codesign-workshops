@@ -1,0 +1,7 @@
+<select
+    class="form-select"
+    [ngModel]="value"
+    (ngModelChange)="onChange($event)"
+    (blur)="onTouch()">
+    <ng-content select="option"></ng-content>
+</select>

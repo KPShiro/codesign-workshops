@@ -1,34 +1,19 @@
-<div class="sidenav">
-    <div class="flex gap-1 items-center justify-center h-12">
-        <span class="font-bold text-brand">
-            CODESING
-        </span>
-        Workshops
+<nav class="sticky top-0 left-0 w-64 h-full p-6 border-r">
+    <div class="flex flex-col gap-2">
+        @for (group of groups; track $index) {
+            <h5 class="uppercase">{{ group.label }}</h5>
+            @for (link of group.links; track $index) {
+                <a
+                    class="flex items-center justify-between text-zinc-800 border hover:border-zinc-300 px-4 py-3 rounded"
+                    [routerLink]="[link.path]"
+                    routerLinkActive="!text-primary-600 bg-primary-200 !border-primary-500">
+                    {{ link.label }}
+                    <mat-icon icon="keyboard_arrow_right"></mat-icon>
+                </a>
+            }
+        }
     </div>
-    <div class="sidenav__separator"></div>
-    <div class="sidenav__links">
-        <ng-container *ngFor="let item of items">
-            <button #navbarLink type="button" class="sidenav-item" [routerLink]="item.path" routerLinkActive="active">
-                <span class="truncate">
-                    {{ item.title }}
-                </span>
-                <span class="material-symbols" *ngIf="item.hasChildren">
-                    {{ isOpened(navbarLink) ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}
-                </span>
-            </button>
-            <ng-container *ngIf="isOpened(navbarLink)">
-                <div class="sidenav-item__children">
-                    <button *ngFor="let subitem of item.children" type="button" class="sidenav-item sidenav-item--child"
-                        [routerLink]="[item.path, subitem.path]" routerLinkActive="active">
-                        <span class="truncate">
-                            {{ subitem.title }}
-                        </span>
-                    </button>
-                </div>
-            </ng-container>
-        </ng-container>
-    </div>
-</div>
-<div class="flex-1 overflow-auto">
+</nav>
+<div class="flex flex-col w-full">
     <router-outlet></router-outlet>
 </div>

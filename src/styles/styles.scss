@@ -6,27 +6,65 @@
 // Material Symbols
 @import '/src/assets/fonts/MaterialSymbols/material-symbols.scss';
 
-// App Themes
-@import './default-theme.scss';
+// Angular Material CDK
+@import '@angular/cdk/overlay-prebuilt.css';
 
-body {
-    @apply bg-surface-sunken-default text-default text-base;
+:root {
+    --scrollbar-color: theme('backgroundColor.zinc.50');
 }
 
-@layer components {
-    button[appButton] {
-        @apply inline-flex items-center justify-center gap-2 w-fit px-4 h-10 rounded bg-surface-default hover:bg-surface-hovered active:bg-surface-pressed disabled:bg-disabled disabled:text-disabled text-center text-button leading-button font-button text-default enabled:cursor-pointer;
-    }
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+    background: var(--scrollbar-color);
+}
 
-    [appButtonGroup] {
-        @apply flex gap-1 p-1 w-fit rounded border-2 border-default;
-    }
+::-webkit-scrollbar-thumb {
+    background: theme('backgroundColor.zinc.800');
+    border: 6px solid var(--scrollbar-color);
+}
 
-    [appButtonGroup] button {
-        @apply inline-flex items-center justify-center gap-2 w-fit px-4 h-10 rounded-sm hover:bg-surface-hovered active:bg-surface-pressed disabled:text-disabled text-button leading-button font-button text-default enabled:cursor-pointer;
-    }
+::-webkit-scrollbar-thumb:hover {
+    border-width: 4px;
+}
 
-    [appButtonGroup] button.active {
-        @apply bg-brand-default text-brand;
-    }
+::-webkit-scrollbar-corner {
+    background: var(--scrollbar-color);
+}
+
+body {
+    @apply bg-zinc-50 text-zinc-800;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply font-bold leading-snug;
+}
+
+h1 {
+    @apply text-3xl;
+}
+
+h2 {
+    @apply text-2xl;
+}
+
+h3 {
+    @apply text-xl;
+}
+
+h4 {
+    @apply text-lg;
+}
+
+h5 {
+    @apply text-base;
+}
+
+h6 {
+    @apply text-sm;
 }

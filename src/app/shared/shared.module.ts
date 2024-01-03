@@ -1,23 +1,20 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-import { PageLayoutViewComponent } from "@codesign/shared/views";
+import {
+    FormSelectComponent,
+    MatIconComponent,
+    SpinnerComponent,
+} from '@codesign/shared/components';
 
-const modules = [
-    CommonModule,
-    RouterModule,
-];
+const modules = [CommonModule];
+const components = [MatIconComponent, SpinnerComponent, FormSelectComponent];
 
 @NgModule({
-    imports: [
-        ...modules,
-    ],
-    exports: [
-        ...modules,
-    ],
-    declarations: [
-        PageLayoutViewComponent,
-    ],
+    imports: [RouterModule, ReactiveFormsModule, FormsModule, ...modules],
+    exports: [...modules, ...components],
+    declarations: [...components],
 })
-export class SharedModule { }
+export class SharedModule {}

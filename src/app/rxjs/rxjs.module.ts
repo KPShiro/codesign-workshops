@@ -1,18 +1,27 @@
+import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '@codesign/shared/shared.module';
+import { routes } from '@codesign/rxjs/rxjs.routes';
 import {
-    IntroductionViewComponent,
-    SubjectsViewComponent,
+    Exercise0ViewComponent,
+    ExerciseWrapperViewComponent,
 } from '@codesign/rxjs/views';
+import { SharedModule } from '@codesign/shared/shared.module';
+
+const angularCdkModules = [CdkMenu, CdkMenuItem, CdkMenuTrigger];
 
 @NgModule({
     imports: [
         SharedModule,
+        ReactiveFormsModule,
+
+        ...angularCdkModules,
+
+        RouterModule.forChild(routes),
     ],
-    declarations: [
-        IntroductionViewComponent,
-        SubjectsViewComponent,
-    ],
+    exports: [RouterModule],
+    declarations: [ExerciseWrapperViewComponent, Exercise0ViewComponent],
 })
-export class RxjsModule { }
+export class RxjsModule {}

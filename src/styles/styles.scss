@@ -9,21 +9,31 @@
 // Angular Material CDK
 @import '@angular/cdk/overlay-prebuilt.css';
 
+:root {
+    --scrollbar-color: theme('backgroundColor.zinc.50');
+}
+
 ::-webkit-scrollbar {
-    width: theme('borderWidth.4');
-    background: transparent;
+    width: 16px;
+    height: 16px;
+    background: var(--scrollbar-color);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: theme('backgroundColor.neutral.800');
+    background: theme('backgroundColor.zinc.800');
+    border: 6px solid var(--scrollbar-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border-width: 4px;
 }
 
 ::-webkit-scrollbar-corner {
-    background: transparent;
+    background: var(--scrollbar-color);
 }
 
 body {
-    @apply bg-zinc-950 text-zinc-50;
+    @apply bg-zinc-50 text-zinc-800;
 }
 
 h1,

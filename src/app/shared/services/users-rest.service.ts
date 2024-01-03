@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, delay, of, take, throwError } from 'rxjs';
 
 import { InMemoryDb } from '@codesign/shared/classes';
-import { IUserDto } from '@codesign/shared/interfaces';
 import { randomizeDelay } from '@codesign/shared/helpers';
+import { IUserDto } from '@codesign/shared/interfaces';
 
 @Injectable({
     providedIn: 'root',
@@ -12,9 +12,9 @@ export class UsersRestService {
     private _data = new InMemoryDb<IUserDto>([
         {
             id: '0',
-            email: 'peter.parker@company.com',
-            firstName: 'Peter',
-            lastName: 'Parker',
+            email: 'tony.stark@company.com',
+            firstName: 'Tony',
+            lastName: 'Stark',
             companyId: '0',
         },
         {
@@ -22,7 +22,7 @@ export class UsersRestService {
             email: 'miles.morales@company.com',
             firstName: 'Miles',
             lastName: 'Morales',
-            companyId: '0',
+            companyId: '1',
         },
     ]);
 
@@ -31,11 +31,11 @@ export class UsersRestService {
     }
 
     getById(id: string): Observable<IUserDto> {
-        return this._returnData([this._data.getById(id)]);
+        return this._returnData(this._data.getById(id));
     }
 
     getByCompanyId(companyId: string): Observable<IUserDto> {
-        return this._returnData([this._data.getByKey('companyId', companyId)]);
+        return this._returnData(this._data.getOneByKey('companyId', companyId));
     }
 
     private _returnData(data: IUserDto | IUserDto[]): Observable<any> {

@@ -5,7 +5,8 @@
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit"
     },
     "files.autoSave": "onFocusChange",
     "eslint.validate": [

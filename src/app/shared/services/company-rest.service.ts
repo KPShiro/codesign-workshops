@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, delay, of, take, throwError } from 'rxjs';
 
 import { InMemoryDb } from '@codesign/shared/classes';
-import { ICompanyDto } from '@codesign/shared/interfaces';
 import { randomizeDelay } from '@codesign/shared/helpers';
+import { ICompanyDto } from '@codesign/shared/interfaces';
 
 @Injectable({
     providedIn: 'root',
@@ -12,13 +12,13 @@ export class CompanyRestService {
     private _data = new InMemoryDb<ICompanyDto>([
         {
             id: '0',
-            name: 'Company 0',
-            disabled: true,
+            name: 'StarkIndustries Inc.',
+            disabled: false,
         },
         {
             id: '1',
-            name: 'Company 1',
-            disabled: false,
+            name: 'SpiderPizza Ltd.',
+            disabled: true,
         },
     ]);
 

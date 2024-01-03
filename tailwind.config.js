@@ -4,10 +4,10 @@ module.exports = {
     theme: {
         extend: {
             colors: ({ colors }) => ({
-                primary: colors.blue,
+                primary: colors.indigo,
             }),
             borderColor: ({ colors }) => ({
-                DEFAULT: colors.zinc[900],
+                DEFAULT: colors.zinc[200],
             }),
             borderWidth: {
                 DEFAULT: '2px',

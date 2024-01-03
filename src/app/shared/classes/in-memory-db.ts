@@ -21,7 +21,7 @@ export class InMemoryDb<T extends IInMemoryDbEntity> {
         return { ...item };
     }
 
-    getByKey(key: keyof T, value: any): T {
+    getOneByKey(key: keyof T, value: any): T {
         const item = this._db.find(item => item[key] === value);
 
         if (!item) {
@@ -29,6 +29,10 @@ export class InMemoryDb<T extends IInMemoryDbEntity> {
         }
 
         return { ...item };
+    }
+
+    getAllByKey(key: keyof T, value: any): T[] {
+        return [...this._db.filter(item => item[key] === value)];
     }
 
     create(id: string, item: T): void {

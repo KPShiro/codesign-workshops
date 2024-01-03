@@ -3,5 +3,8 @@ export * from './balance.interface';
 export * from './command-config.interface';
 export * from './command.interface';
 export * from './company.interface';
+export * from './container.interface';
 export * from './in-memory-db-entity.interface';
+export * from './price.interface';
+export * from './request.interface';
 export * from './user.interface';

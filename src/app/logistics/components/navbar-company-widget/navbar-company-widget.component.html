@@ -1,0 +1,17 @@
+@if (vm$ | async; as vm) {
+    <app-navbar-widget
+        [loading]="vm.company.loading"
+        [text]="vm.company.name"
+        (actionClicked)="handlePrimaryButtonClick()"
+        [dropdown]="true"
+        (dropdownClicked)="handleSecondaryButtonClick()">
+    </app-navbar-widget>
+} @else {
+    <app-navbar-widget
+        [loading]="true"
+        text="Loading company..."
+        (actionClicked)="handlePrimaryButtonClick()"
+        [dropdown]="true"
+        (dropdownClicked)="handleSecondaryButtonClick()">
+    </app-navbar-widget>
+}

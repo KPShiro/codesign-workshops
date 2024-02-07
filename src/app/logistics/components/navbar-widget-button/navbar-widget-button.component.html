@@ -1,0 +1,22 @@
+<button
+    type="button"
+    class="h-10 flex gap-3 items-center justify-center bg-white bg-opacity-10 enabled:hover:bg-opacity-20 enabled:active:bg-opacity-10 disabled:opacity-25 enabled:cursor-pointer disabled:cursor-not-allowed"
+    [ngClass]="{ 'w-10': !text, 'px-4': text }"
+    (click)="onButtonClicked()"
+    [disabled]="disabled">
+    @if (loading) {
+        <app-spinner></app-spinner>
+    }
+    @if (!loading && icon && iconPosition === 'before') {
+        <mat-icon [icon]="icon"></mat-icon>
+    }
+    @if (text) {
+        <div
+            class="flex-1 max-w-[24ch] text-ellipsis overflow-hidden whitespace-nowrap font-semibold text-sm">
+            {{ text }}
+        </div>
+    }
+    @if (icon && iconPosition === 'after') {
+        <mat-icon [icon]="icon"></mat-icon>
+    }
+</button>

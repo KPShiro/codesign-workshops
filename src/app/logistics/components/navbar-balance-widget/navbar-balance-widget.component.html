@@ -1,0 +1,18 @@
+@if (vm$ | async; as vm) {
+    <app-navbar-widget
+        [loading]="vm.balance.loading"
+        [icon]="vm.balance.warning ? 'warning' : null"
+        [text]="vm.balance.amount | intlCurrency"
+        (actionClicked)="handlePrimaryButtonClick()"
+        [dropdown]="true"
+        (dropdownClicked)="handleSecondaryButtonClick()">
+    </app-navbar-widget>
+} @else {
+    <app-navbar-widget
+        [loading]="true"
+        text="Lodaing balance..."
+        (actionClicked)="handlePrimaryButtonClick()"
+        [dropdown]="true"
+        (dropdownClicked)="handleSecondaryButtonClick()">
+    </app-navbar-widget>
+}

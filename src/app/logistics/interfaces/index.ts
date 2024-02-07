@@ -1,4 +1,5 @@
 export * from './address.interface';
+export * from './company-balance.interface';
 export * from './company.interface';
 export * from './container.interface';
 export * from './location.interface';

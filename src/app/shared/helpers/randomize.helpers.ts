@@ -1,85 +1,46 @@
-import {
-    Carrier,
-    ContainerSize,
-    ContainerType,
-    Currency,
-    RequestStatus,
-} from '@codesign/shared/enums';
-import { IRequestDto } from '@codesign/shared/interfaces';
-
-export function randomizeNumber(min: number, max: number): number {
+export function getRandomNumber(min: number = 0, max: number = 100): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export function randomizeEnum(enumObject: any): string {
-    const keys = Object.keys(enumObject);
-
-    return keys[randomizeNumber(0, keys.length - 1)];
-}
-
-export function randomizeDelay(min: number = 100, max: number = 1000): number {
-    return randomizeNumber(min, max);
-}
-
-export function randomizeDateFromDate(
-    date: Date = new Date(),
-    min: number = 0,
-    max: number = 14
+/**
+ * Generates random date between `startDate` and `startDate` + `maxDays`.
+ * @param startDate Date to start from
+ * @param maxDays Maximum days from start date
+ */
+export function getRandomDate(
+    startDate: Date = new Date(),
+    maxDays: number = 14
 ): Date {
-    const days = randomizeNumber(min, max);
-    date.setDate(date.getDate() + days);
+    const diffDays = getRandomNumber(0, maxDays);
+    const date = new Date(startDate);
+    date.setDate(date.getDate() + diffDays);
 
     return date;
 }
 
-export function randomizeContainerNumber(pre: string = 'TEST'): string {
-    const number = randomizeNumber(100000, 999999);
+export function getRandomEnumValue<T = Object>(enumObject: T): T[keyof T] {
+    const enumValues = (Object.keys(enumObject as any) as (keyof T)[]).map(
+        key => enumObject[key]
+    );
+    const randomIndex = Math.floor(Math.random() * enumValues.length);
 
-    return `${pre}${number}`;
+    return enumValues[randomIndex];
 }
 
-export function randomizeContainerSize(): ContainerSize {
-    return randomizeEnum(ContainerSize) as ContainerSize;
-}
+/**
+ * Generates random GUID. By default, it excludes `0000-0000-0000-0000` GUID.
+ * @param excludedGUID GUID to exclude from generation
+ * @returns GUID formatted as `xxxx-xxxx-xxxx-xxxx`
+ */
+export function generateGUID(excludedGUID: string = '0000-0000-0000-0000'): string {
+    let guid: string;
 
-export function randomizeContainerType(): ContainerType {
-    return randomizeEnum(ContainerType) as ContainerType;
-}
+    do {
+        guid = 'xxxx-xxxx-xxxx-xxxx'.replace(/[x]/g, function (c) {
+            var r = (Math.random() * 16) | 0;
+            return r.toString(16);
+        });
+    } while (guid === excludedGUID);
 
-export function randomizeRequestStatus(): RequestStatus {
-    return randomizeEnum(RequestStatus) as RequestStatus;
-}
-
-export function randomizeCarrier(): Carrier {
-    return randomizeEnum(Carrier) as Carrier;
-}
-
-export function randomizeRequestDto(
-    id: string,
-    authorId: string,
-    companyId: string,
-    currency: Currency,
-    createdAt: Date = new Date()
-): IRequestDto {
-    const createdAtDate = randomizeDateFromDate(createdAt);
-    const plannedAtDate = randomizeDateFromDate(createdAtDate, randomizeNumber(1, 10));
-
-    return {
-        id,
-        authorId,
-        companyId,
-        carrier: randomizeCarrier(),
-        status: randomizeRequestStatus(),
-        createdAt: createdAtDate.getTime(),
-        plannedAt: plannedAtDate.getTime(),
-        container: {
-            number: randomizeContainerNumber(),
-            size: randomizeContainerSize(),
-            type: randomizeContainerType(),
-        },
-        price: {
-            amount: randomizeNumber(5, 10),
-            currency: currency,
-        },
-    };
+    return guid;
 }

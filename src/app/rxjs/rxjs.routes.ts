@@ -4,11 +4,6 @@ import { Exercise0ViewComponent, ExerciseWrapperViewComponent } from './views';
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'exercises',
-        pathMatch: 'full',
-    },
-    {
-        path: 'exercises',
         component: ExerciseWrapperViewComponent,
         children: [
             {

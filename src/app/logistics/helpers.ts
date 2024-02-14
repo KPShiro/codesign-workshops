@@ -3,6 +3,7 @@ import {
     ContainerSize,
     ContainerType,
     Currency,
+    RequestStatus,
 } from '@codesign/logistics/enums';
 import {
     ILocation,
@@ -12,9 +13,10 @@ import {
     IRequestPrice,
     IRequestStatus,
 } from '@codesign/logistics/interfaces';
+import { exchangeRatesSet, requestStatusesSet } from './constants';
+
 import * as logisticsMocks from '@codesign/logistics/mocks';
 import * as sharedHelpers from '@codesign/shared/helpers';
-import { exchangeRatesSet, requestStatusesSet } from './constants';
 
 export function getRandomContainerNumber(text: string = 'TEST'): string {
     return `${text}${sharedHelpers.getRandomNumber(100000, 999999)}`;
@@ -40,11 +42,23 @@ export function getRandomCarrier(): Carrier {
     return sharedHelpers.getRandomEnumValue(Carrier);
 }
 
+export function getRequestStatus(status: RequestStatus): IRequestStatus {
+    const requestStatuses = [...requestStatusesSet];
+    return requestStatuses.find(requestStatus => requestStatus.status === status)!;
+}
+
 export function getRandomRequestStatus(): IRequestStatus {
     const requestStatuses = [...requestStatusesSet];
     const index = sharedHelpers.getRandomNumber(0, requestStatuses.length - 1);
 
     return requestStatuses[index];
+}
+
+export function getAuthor(userId: string, companyId: string): IRequestAuthor {
+    return {
+        user: logisticsMocks.users.find(user => user.id === userId)!,
+        company: logisticsMocks.companies.find(company => company.id === companyId)!,
+    };
 }
 
 export function getRandomAuthor(): IRequestAuthor {
@@ -71,24 +85,28 @@ export function exchangeAmount(amount: number, currency: Currency): IPrice {
 
     return {
         amount: amount * exchangeRate.rate,
-        currency: Currency.EUR,
+        currency: currency,
     };
 }
 
-export function getRandomPrice(): IRequestPrice {
-    const randomAmount = sharedHelpers.getRandomNumber(10, 100);
-    const randomCurrency = sharedHelpers.getRandomEnumValue(Currency);
+export function getRandomPrice(
+    min: number = 10,
+    max: number = 100,
+    currency?: Currency
+): IRequestPrice {
+    const randomAmount = sharedHelpers.getRandomNumber(min, max);
+    const randomCurrency = currency || sharedHelpers.getRandomEnumValue(Currency);
 
     return {
-        current: {
-            currency: randomCurrency,
+        current: exchangeAmount(randomAmount, randomCurrency),
+        original: {
+            currency: Currency.EUR,
             amount: randomAmount,
         },
-        original: exchangeAmount(randomAmount, randomCurrency),
     };
 }
 
-export function getRandomRequests(request?: Partial<IRequest>): IRequest {
+export function getRandomRequest(request?: Partial<IRequest>): IRequest {
     return {
         id: request?.id || sharedHelpers.generateGUID(),
         status: request?.status || getRandomRequestStatus(),
@@ -101,8 +119,21 @@ export function getRandomRequests(request?: Partial<IRequest>): IRequest {
         },
         author: request?.author || getRandomAuthor(),
         carrier: request?.carrier || getRandomCarrier(),
-        price: request?.price || getRandomPrice(),
+        price: request?.price || getRandomPrice(5, 25),
         origin: request?.origin || getRandomLocation(),
         destination: request?.destination || getRandomLocation(),
     };
+}
+
+export function getInitials(fullName: string): string {
+    const nameParts = fullName.split(' ');
+
+    if (nameParts.length === 1) {
+        return nameParts[0].substring(0, 2).toUpperCase();
+    }
+
+    return nameParts
+        .map(part => part.substring(0, 1).toUpperCase())
+        .slice(0, 2)
+        .join('');
 }

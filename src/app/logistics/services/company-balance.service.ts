@@ -24,7 +24,7 @@ export class CompanyBalanceService {
         return this._loading.asObservable();
     }
 
-    private _storageKey: string = 'codesign.companyBalanceId';
+    private _storageKey: string = 'codesign.balanceId';
 
     get storageKey(): string {
         return this._storageKey;
@@ -47,7 +47,7 @@ export class CompanyBalanceService {
                 this._balance.next(balance);
                 this._loading.next(false);
             },
-            getRandomNumber(300, 1000)
+            getRandomNumber(300, 500)
         );
     }
 
@@ -68,11 +68,11 @@ export class CompanyBalanceService {
                 this._balance.next(balance);
                 this._loading.next(false);
             },
-            getRandomNumber(500, 2000)
+            getRandomNumber(300, 500)
         );
     }
 
-    clearBalance(): void {
+    clearData(): void {
         localStorage.removeItem(this.storageKey);
         this._balance.next(null);
         this._loading.next(false);

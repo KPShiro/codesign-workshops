@@ -1,5 +1,5 @@
+import { IAction, ICommand, ICommandConfig } from '@codesign/shared/interfaces';
 import { BehaviorSubject, Observable, finalize, isObservable, take } from 'rxjs';
-import { ICommand, ICommandConfig, IAction } from '@codesign/shared/interfaces';
 
 export abstract class Command<TParams = any> implements ICommand<TParams> {
     private _processing = new BehaviorSubject<boolean>(false);
@@ -36,22 +36,27 @@ export abstract class Command<TParams = any> implements ICommand<TParams> {
                     return;
                 }
 
-                const result = this.execute(params);
+                try {
+                    const result = this.execute(params);
 
-                if (isObservable(result)) {
-                    this._processing.next(true);
+                    if (isObservable(result)) {
+                        this._processing.next(true);
 
-                    result
-                        .pipe(
-                            take(1),
-                            finalize(() => this._processing.next(false))
-                        )
-                        .subscribe({
-                            next: () => config.onSuccess?.(),
-                            error: () => config.onError?.(),
-                        });
-                } else {
-                    config.onSuccess?.();
+                        result
+                            .pipe(
+                                take(1),
+                                finalize(() => this._processing.next(false))
+                            )
+                            .subscribe({
+                                next: () => config.onSuccess?.(),
+                                error: () => config.onError?.(),
+                            });
+                    } else {
+                        config.onSuccess?.();
+                    }
+                } catch (e) {
+                    config.onError?.();
+                    throw e;
                 }
             },
         };

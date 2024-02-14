@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { companies } from '@codesign/logistics/mocks';
 import {
     CompanyAccountService,
     CompanyBalanceService,
+    UserAccountService,
 } from '@codesign/logistics/services';
 import { filterUndefined } from '@codesign/shared/helpers';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     templateUrl: 'wrapper.component.html',
@@ -16,25 +16,23 @@ export class WrapperViewComponent implements OnInit, OnDestroy {
     destroy$ = this._destroy.asObservable();
 
     constructor(
+        private readonly _userAccountService: UserAccountService,
         private readonly _companyAccountService: CompanyAccountService,
         private readonly _companyBalanceService: CompanyBalanceService
     ) {}
 
     ngOnInit(): void {
         this._companyAccountService.company$
-            .pipe(
-                filterUndefined(),
-                tap(company =>
-                    this._companyBalanceService.onCompanySwitched(company?.id)
-                ),
-                takeUntil(this.destroy$)
-            )
-            .subscribe();
+            .pipe(filterUndefined(), takeUntil(this.destroy$))
+            .subscribe(company => {
+                this._companyBalanceService.onCompanySwitched(company.id);
+            });
 
-        const companyId = this._companyAccountService.company?.id || companies[0].id;
-
-        this._companyAccountService.switchAccount(companyId);
-        this._companyBalanceService.onCompanySwitched(companyId);
+        this._userAccountService.user$
+            .pipe(filterUndefined(), takeUntil(this.destroy$))
+            .subscribe(user => {
+                this._companyAccountService.onUserSwitched(user.id);
+            });
     }
 
     ngOnDestroy(): void {

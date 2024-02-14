@@ -1,29 +1,43 @@
 import { Routes } from '@angular/router';
+import { Feature } from './core/enums';
+import { hasFeatureAccess } from './core/guards';
+import { UnlockFeatureViewComponent } from './core/views';
 
-export enum AppRoute {
-    RXJS = 'rxjs',
-    LOGISTICS = 'logistics',
+export enum AppRoutes {
+    UNLOCK_FEATURE = 'unlock-feature',
 }
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: AppRoute.RXJS,
+        redirectTo: Feature.LOGISTICS,
         pathMatch: 'full',
     },
     {
-        path: AppRoute.RXJS,
+        path: Feature.RXJS,
+        canActivate: [hasFeatureAccess],
+        data: {
+            feature: Feature.RXJS,
+        },
         loadChildren: () =>
             import('@codesign/rxjs/rxjs.module').then(m => m.RxjsModule),
     },
     {
-        path: AppRoute.LOGISTICS,
+        path: Feature.LOGISTICS,
+        canActivate: [hasFeatureAccess],
+        data: {
+            feature: Feature.LOGISTICS,
+        },
         loadChildren: () =>
             import('@codesign/logistics/logistics.module').then(m => m.LogisticsModule),
     },
     {
+        path: AppRoutes.UNLOCK_FEATURE,
+        component: UnlockFeatureViewComponent,
+    },
+    {
         path: '**',
-        redirectTo: AppRoute.RXJS,
+        redirectTo: '/',
         pathMatch: 'full',
     },
 ];

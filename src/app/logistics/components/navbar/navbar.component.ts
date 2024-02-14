@@ -1,20 +1,14 @@
 import { Component } from '@angular/core';
+import { SignOutAction } from '@codesign/logistics/actions';
 
 @Component({
     selector: 'app-navbar',
     templateUrl: 'navbar.component.html',
-    styleUrls: ['navbar.component.scss'],
 })
 export class NavbarComponent {
-    protected handleSettings(): void {
-        alert('Settings');
-    }
+    signOutAction = this._signOutAction.build<void>({
+        resolveParams: () => ({}),
+    });
 
-    protected handleUserAccount(): void {
-        alert('User account');
-    }
-
-    protected handleMenu(): void {
-        alert('Menu');
-    }
+    constructor(private readonly _signOutAction: SignOutAction) {}
 }

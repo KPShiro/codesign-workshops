@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { companies } from '@codesign/logistics/mocks';
-import { CompanyAccountService } from '@codesign/logistics/services';
+import { Router } from '@angular/router';
+import { Feature } from '@codesign/core/enums';
+import { LogisticsRoutes } from '@codesign/logistics/logistics.routes';
+import {
+    CompanyAccountService,
+    UserAccountService,
+} from '@codesign/logistics/services';
 import { combineLatest, filter, map } from 'rxjs';
 
 @Component({
@@ -12,29 +17,29 @@ export class NavbarCompanyWidgetComponent {
     vm$ = combineLatest([
         this._companyAccountService.company$,
         this._companyAccountService.loading$,
+        this._userAccountService.user$,
     ]).pipe(
-        filter(([company]) => !!company),
-        map(([company, companyLoading]) => ({
+        filter(([company, , user]) => !!company && !!user),
+        map(([company, companyLoading, user]) => ({
             company: {
                 loading: companyLoading,
                 name: company!.name,
             },
+            hasMultipleCompanies: user!.companyIds.length > 1 || false,
         }))
     );
 
-    constructor(private readonly _companyAccountService: CompanyAccountService) {}
+    constructor(
+        private readonly _companyAccountService: CompanyAccountService,
+        private readonly _userAccountService: UserAccountService,
+        private readonly _router: Router
+    ) {}
 
     protected handlePrimaryButtonClick(): void {
-        throw new Error('Not implemented');
+        this._router.navigate(['/', Feature.LOGISTICS, LogisticsRoutes.COMPANY]);
     }
 
-    protected handleSecondaryButtonClick(): void {
-        const id =
-            localStorage.getItem(this._companyAccountService.storageKey) ===
-            companies[0].id
-                ? companies[1].id
-                : companies[0].id;
-
+    protected handleSelectCompany(id: string): void {
         this._companyAccountService.switchAccount(id);
     }
 }

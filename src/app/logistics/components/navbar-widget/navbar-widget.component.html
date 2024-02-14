@@ -1,18 +1,22 @@
-<div class="flex gap-0.5 rounded overflow-hidden">
-    <app-navbar-widget-button
-        [icon]="icon"
-        [iconPosition]="iconPosition"
-        [text]="text"
-        [loading]="loading"
-        [disabled]="disabled"
-        (clicked)="onPrimaryBtnClick()">
-    </app-navbar-widget-button>
-    @if (dropdown) {
-        <app-navbar-widget-button
-            [disabled]="disabled"
-            [text]="null"
-            icon="arrow_drop_down"
-            (clicked)="onSecondaryBtnClick()">
-        </app-navbar-widget-button>
+<button
+    type="button"
+    class="h-10 flex gap-3 items-center justify-center text-onPrimary bg-onPrimary bg-opacity-10 enabled:hover:bg-opacity-20 enabled:active:bg-opacity-10 disabled:opacity-25 enabled:cursor-pointer disabled:cursor-default"
+    [ngClass]="{ 'w-10': !text, 'px-4': text, rounded: rounded }"
+    (click)="onButtonClicked()"
+    [disabled]="disabled">
+    @if (loading) {
+        <app-spinner></app-spinner>
     }
-</div>
+    @if (!loading && icon && iconPosition === 'before') {
+        <mat-icon [icon]="icon"></mat-icon>
+    }
+    @if (text) {
+        <div
+            class="flex-1 max-w-[24ch] text-ellipsis overflow-hidden whitespace-nowrap font-semibold text-sm">
+            {{ text }}
+        </div>
+    }
+    @if (icon && iconPosition === 'after') {
+        <mat-icon [icon]="icon"></mat-icon>
+    }
+</button>

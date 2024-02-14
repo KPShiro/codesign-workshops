@@ -4,16 +4,32 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import {
+    AvatarComponent,
+    ButtonComponent,
     FormSelectComponent,
     MatIconComponent,
+    MenuComponent,
+    MenuHeaderComponent,
+    MenuOptionComponent,
+    MenuSeparatorComponent,
     SpinnerComponent,
 } from '@codesign/shared/components';
 
-const modules = [CommonModule];
-const components = [MatIconComponent, SpinnerComponent, FormSelectComponent];
+const modules = [CommonModule, ReactiveFormsModule, FormsModule, RouterModule];
+const components = [
+    AvatarComponent,
+    ButtonComponent,
+    FormSelectComponent,
+    MatIconComponent,
+    MenuComponent,
+    MenuHeaderComponent,
+    MenuOptionComponent,
+    MenuSeparatorComponent,
+    SpinnerComponent,
+];
 
 @NgModule({
-    imports: [RouterModule, ReactiveFormsModule, FormsModule, ...modules],
+    imports: [...modules],
     exports: [...modules, ...components],
     declarations: [...components],
 })

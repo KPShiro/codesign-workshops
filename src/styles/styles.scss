@@ -68,3 +68,19 @@ h5 {
 h6 {
     @apply text-sm;
 }
+
+.form-input,
+.form-textarea,
+.form-select,
+.form-multiselect {
+    border-width: theme('borderWidth.DEFAULT');
+    border-color: theme('borderColor.DEFAULT');
+    border-radius: theme('borderRadius.DEFAULT');
+}
+
+.form-input.ng-dirty.ng-invalid,
+.form-textarea.ng-dirty.ng-invalid,
+.form-select.ng-dirty.ng-invalid,
+.form-multiselect.ng-dirty.ng-invalid {
+    border-color: theme('borderColor.danger');
+}

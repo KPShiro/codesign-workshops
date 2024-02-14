@@ -1,7 +1,7 @@
-<nav class="flex items-center bg-green-600 text-white select-none">
+<nav class="flex items-center bg-primary select-none">
     <div
         class="flex-1 flex gap-4 items-center justify-between max-w-screen-2xl mx-auto py-4 px-10">
-        <div class="flex gap-1">
+        <div class="flex gap-1 text-onPrimary">
             <span class="font-bold">CODESIGN</span>
             <span class="opacity-80">Logistics</span>
         </div>
@@ -11,22 +11,14 @@
                 <app-navbar-company-widget></app-navbar-company-widget>
             </div>
             <div class="flex gap-1">
-                <app-navbar-widget
-                    [text]="null"
-                    icon="person"
-                    (actionClicked)="handleUserAccount()">
-                </app-navbar-widget>
-                <app-navbar-widget
-                    [text]="null"
-                    icon="settings"
-                    (actionClicked)="handleSettings()">
-                </app-navbar-widget>
-                <app-navbar-widget
-                    [text]="null"
-                    icon="menu"
-                    (actionClicked)="handleMenu()">
-                </app-navbar-widget>
+                <app-navbar-widget icon="notifications" [text]="null" />
+                <app-navbar-widget icon="question_mark" [text]="null" />
+                <app-navbar-widget icon="settings" [text]="null" />
             </div>
+            <app-navbar-widget
+                [icon]="signOutAction.icon"
+                [text]="signOutAction.label"
+                (clicked)="signOutAction.execute()" />
         </div>
     </div>
 </nav>

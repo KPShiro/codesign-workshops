@@ -1,18 +1,60 @@
-@if (vm$ | async; as vm) {
-    <app-navbar-widget
-        [loading]="vm.balance.loading"
-        [icon]="vm.balance.warning ? 'warning' : null"
-        [text]="vm.balance.amount | intlCurrency"
-        (actionClicked)="handlePrimaryButtonClick()"
-        [dropdown]="true"
-        (dropdownClicked)="handleSecondaryButtonClick()">
-    </app-navbar-widget>
-} @else {
-    <app-navbar-widget
-        [loading]="true"
-        text="Lodaing balance..."
-        (actionClicked)="handlePrimaryButtonClick()"
-        [dropdown]="true"
-        (dropdownClicked)="handleSecondaryButtonClick()">
-    </app-navbar-widget>
-}
+<div class="flex gap-0.5 rounded overflow-hidden">
+    @if (vm$ | async; as vm) {
+        <app-navbar-widget
+            [icon]="vm.balance.warning ? 'warning' : null"
+            [text]="vm.balance.amount.current | intlCurrency: vm.balance.currency"
+            [loading]="vm.balance.loading"
+            [rounded]="false"
+            (clicked)="handlePrimaryButtonClick()" />
+        <app-navbar-widget
+            icon="arrow_drop_down"
+            [text]="null"
+            [rounded]="false"
+            [cdkMenuTriggerFor]="menu"
+            [cdkMenuPosition]="[
+                {
+                    originX: 'end',
+                    originY: 'bottom',
+                    overlayX: 'end',
+                    overlayY: 'top',
+                    offsetY: 4
+                }
+            ]" />
+
+        <ng-template #menu>
+            <app-menu cdkMenu>
+                <app-menu-header>
+                    <div
+                        class="flex flex-col gap-1 p-4 bg-neutral-100 text-neutral-500">
+                        <div class="flex gap-1 text-xs font-bold">
+                            <span>Allocated:</span>
+                            <span>
+                                {{
+                                    vm.balance.amount.allocated
+                                        | intlCurrency: vm.balance.currency
+                                }}
+                            </span>
+                        </div>
+                        <p class="text-xs opacity-80">
+                            This amount is not available for other uses, until the
+                            requests it was allocated for has been completed.
+                        </p>
+                    </div>
+                </app-menu-header>
+                <app-menu-option icon="add" cdkMenuItem>Top up balance</app-menu-option>
+                <app-menu-option icon="timeline" cdkMenuItem>
+                    View transactions history
+                </app-menu-option>
+                <app-menu-option icon="edit_notifications" cdkMenuItem>
+                    Edit balance warnings
+                </app-menu-option>
+            </app-menu>
+        </ng-template>
+    } @else {
+        <app-navbar-widget
+            [text]="null"
+            [loading]="true"
+            [rounded]="false"
+            [disabled]="true" />
+    }
+</div>

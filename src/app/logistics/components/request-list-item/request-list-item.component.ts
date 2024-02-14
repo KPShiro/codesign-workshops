@@ -3,8 +3,7 @@ import { IRequest } from '@codesign/logistics/interfaces';
 
 @Component({
     selector: 'app-request-list-item',
-    templateUrl: 'request-list-item.components.html',
-    styleUrls: ['request-list-item.components.scss'],
+    templateUrl: 'request-list-item.component.html',
 })
 export class RequestListItemComponent {
     @Input({ required: true }) request!: IRequest;

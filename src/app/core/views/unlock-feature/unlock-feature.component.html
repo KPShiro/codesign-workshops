@@ -1,0 +1,37 @@
+<div
+    class="flex flex-col items-center justify-center h-screen w-screen p-6 bg-neutral-300">
+    <div
+        class="flex flex-col w-full max-w-[448px] rounded overflow-hidden bg-white shadow-xl">
+        <div class="flex items-center justify-center h-48 bg-neutral-100">
+            <img
+                src="assets/images/authentication-flatline.svg"
+                alt="authentication"
+                class="max-h-32" />
+        </div>
+        <div class="flex flex-col gap-10 p-10">
+            <div class="flex flex-col gap-2 text-center">
+                <h4>Access Restricted</h4>
+                <p class="text-sm text-neutral-500 max-w-prose">
+                    Access to this module is restricted. Please enter the password
+                    provided by the administrator.
+                </p>
+            </div>
+            <form
+                class="w-full flex flex-col gap-3"
+                [formGroup]="form"
+                (ngSubmit)="unlockFeatureAction.execute()">
+                <input
+                    type="password"
+                    formControlName="password"
+                    placeholder="Enter password..."
+                    class="form-input w-full" />
+                <app-button
+                    type="submit"
+                    variant="primary"
+                    [disabled]="unlockFeatureAction.disabled()">
+                    {{ unlockFeatureAction.label }}
+                </app-button>
+            </form>
+        </div>
+    </div>
+</div>

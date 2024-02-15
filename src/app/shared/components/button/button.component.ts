@@ -12,5 +12,9 @@ type ButtonType = 'button' | 'submit' | 'reset';
 export class ButtonComponent {
     @Input() type: ButtonType = 'button';
     @Input() variant: ButtonVariant = 'primary';
+
     @Input() disabled: boolean = false;
+
+    @Input() icon?: string;
+    @Input() text?: string;
 }

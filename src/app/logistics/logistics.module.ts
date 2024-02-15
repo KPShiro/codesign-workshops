@@ -6,8 +6,10 @@ import {
     NavbarBalanceWidgetComponent,
     NavbarCompanyWidgetComponent,
     NavbarComponent,
+    NavbarMenuWidgetComponent,
     NavbarWidgetComponent,
     RequestListItemComponent,
+    UserAccountPreviewComponent,
 } from '@codesign/logistics/components';
 import { routes } from '@codesign/logistics/logistics.routes';
 import {
@@ -29,8 +31,10 @@ const components = [
     NavbarBalanceWidgetComponent,
     NavbarCompanyWidgetComponent,
     NavbarComponent,
+    NavbarMenuWidgetComponent,
     NavbarWidgetComponent,
     RequestListItemComponent,
+    UserAccountPreviewComponent,
 ];
 
 const views = [DashboardViewComponent, WrapperViewComponent, SignInViewComponent];

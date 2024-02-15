@@ -6,6 +6,10 @@
     @apply relative z-[2] w-full px-4 py-2.5 flex gap-2 items-center justify-center;
 }
 
+.btn-icon .btn__content {
+    @apply px-3 py-2.5;
+}
+
 .btn__overlay {
     @apply absolute inset-0 z-[1] block opacity-0 bg-primary;
 }

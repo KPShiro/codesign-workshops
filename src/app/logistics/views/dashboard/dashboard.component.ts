@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
-import { RequestsService } from '@codesign/logistics/services';
+import { CompanyRequestsService } from '@codesign/logistics/services';
+import { combineLatest, map } from 'rxjs';
 
 @Component({
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.component.scss'],
 })
 export class DashboardViewComponent {
-    requests = this._requestsService.requests;
+    vm$ = combineLatest([
+        this._companyRequestsService.requests$,
+        this._companyRequestsService.loading$,
+    ]).pipe(map(([requests, requestsLoading]) => ({ requests, requestsLoading })));
 
-    constructor(private readonly _requestsService: RequestsService) {}
+    constructor(private readonly _companyRequestsService: CompanyRequestsService) {}
 }

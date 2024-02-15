@@ -1,10 +1,17 @@
-<button [type]="type" [disabled]="disabled" class="btn btn-{{ variant }}">
+<button
+    [type]="type"
+    [disabled]="disabled"
+    class="btn btn-{{ variant }}"
+    [ngClass]="{ 'btn-icon': icon && !text }">
     <div class="btn__overlay"></div>
     <div class="btn__content">
-        <ng-content select="mat-icon"></ng-content>
-        <div
-            class="text-sm font-semibold text-ellipsis overflow-hidden whitespace-nowrap">
-            <ng-content></ng-content>
-        </div>
+        @if (icon) {
+            <mat-icon class="leading-5" [icon]="icon" />
+        }
+        @if (text) {
+            <div class="text-sm text-ellipsis overflow-hidden whitespace-nowrap">
+                {{ text }}
+            </div>
+        }
     </div>
 </button>

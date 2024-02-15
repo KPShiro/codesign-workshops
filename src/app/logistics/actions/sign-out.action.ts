@@ -5,6 +5,7 @@ import { LogisticsRoutes } from '@codesign/logistics/logistics.routes';
 import {
     CompanyAccountService,
     CompanyBalanceService,
+    CompanyRequestsService,
     UserAccountService,
 } from '@codesign/logistics/services';
 import { Command } from '@codesign/shared/classes';
@@ -17,12 +18,14 @@ export class SignOutAction extends Command<void> {
         private readonly _userAccountService: UserAccountService,
         private readonly _companyAccountService: CompanyAccountService,
         private readonly _companyBalanceService: CompanyBalanceService,
+        private readonly _companyRequestsService: CompanyRequestsService,
         private readonly _router: Router
     ) {
         super('logout', 'Sign out');
     }
 
     execute(): void {
+        this._companyRequestsService.clearData();
         this._companyBalanceService.clearData();
         this._companyAccountService.clearData();
         this._userAccountService.clearData();

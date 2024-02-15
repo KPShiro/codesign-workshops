@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
     CompanyAccountService,
     CompanyBalanceService,
+    CompanyRequestsService,
     UserAccountService,
 } from '@codesign/logistics/services';
 import { filterUndefined } from '@codesign/shared/helpers';
@@ -18,7 +19,8 @@ export class WrapperViewComponent implements OnInit, OnDestroy {
     constructor(
         private readonly _userAccountService: UserAccountService,
         private readonly _companyAccountService: CompanyAccountService,
-        private readonly _companyBalanceService: CompanyBalanceService
+        private readonly _companyBalanceService: CompanyBalanceService,
+        private readonly _companyRequestsService: CompanyRequestsService
     ) {}
 
     ngOnInit(): void {
@@ -26,6 +28,7 @@ export class WrapperViewComponent implements OnInit, OnDestroy {
             .pipe(filterUndefined(), takeUntil(this.destroy$))
             .subscribe(company => {
                 this._companyBalanceService.onCompanySwitched(company.id);
+                this._companyRequestsService.onCompanySwitched(company.id);
             });
 
         this._userAccountService.user$

@@ -1,0 +1,33 @@
+.avatar {
+    @apply w-10 h-10 grow-0 shrink-0 flex items-center justify-center rounded text-sm;
+}
+
+.avatar--primary {
+    &.avatar--filled {
+        @apply bg-primary text-onPrimary;
+    }
+
+    &.avatar--semitransparent {
+        @apply bg-primary/10 text-primary;
+    }
+}
+
+.avatar--neutral {
+    &.avatar--filled {
+        @apply bg-neutral-800 text-neutral-50;
+    }
+
+    &.avatar--semitransparent {
+        @apply bg-neutral-800/10 text-neutral-800;
+    }
+}
+
+.avatar--inversed {
+    &.avatar--filled {
+        @apply bg-white text-neutral-800;
+    }
+
+    &.avatar--semitransparent {
+        @apply bg-white/10 text-white;
+    }
+}

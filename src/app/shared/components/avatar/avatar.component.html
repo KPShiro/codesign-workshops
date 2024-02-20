@@ -1,8 +1,9 @@
-<div
-    class="w-10 h-10 grow-0 shrink-0 flex items-center justify-center rounded bg-neutral-800 bg-opacity-5 text-neutral-500 text-sm">
+<div class="avatar avatar--{{ color }} avatar--{{ variant }}">
     @if (initials) {
         <span class="font-semibold">{{ initials }}</span>
-    } @else {
+    } @else if (icon) {
         <mat-icon [icon]="icon"></mat-icon>
+    } @else {
+        <mat-icon icon="question_mark"></mat-icon>
     }
 </div>

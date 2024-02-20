@@ -1,9 +1,9 @@
 @if (vm$ | async; as vm) {
     <div class="flex flex-col gap-4 w-[256px] p-4 bg-neutral-100">
         <div class="flex items-center gap-4">
-            <app-avatar [name]="vm.user.fullName" />
+            <app-avatar color="neutral" [name]="vm.user.fullName" />
             <div class="max-w-full overflow-hidden flex flex-col">
-                <div class="text-ellipsis overflow-hidden whitespace-nowrap">
+                <div class="truncate">
                     {{ vm.user.fullName }}
                 </div>
                 <div class="text-xs opacity-60">
@@ -11,6 +11,6 @@
                 </div>
             </div>
         </div>
-        <app-button variant="secondary" text="View profile" />
+        <app-button color="neutral" variant="semitransparent" text="Edit profile" />
     </div>
 }

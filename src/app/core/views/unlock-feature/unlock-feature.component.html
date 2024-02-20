@@ -28,9 +28,9 @@
                 <app-button
                     type="submit"
                     variant="primary"
-                    [disabled]="unlockFeatureAction.disabled()">
-                    {{ unlockFeatureAction.label }}
-                </app-button>
+                    [icon]="unlockFeatureAction.icon"
+                    [text]="unlockFeatureAction.label"
+                    [disabled]="unlockFeatureAction.disabled()" />
             </form>
         </div>
     </div>

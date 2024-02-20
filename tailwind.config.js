@@ -16,9 +16,6 @@ module.exports = {
             borderColor: ({ colors }) => ({
                 DEFAULT: colors.zinc[200],
             }),
-            borderWidth: {
-                DEFAULT: '2px',
-            },
         },
     },
     plugins: [

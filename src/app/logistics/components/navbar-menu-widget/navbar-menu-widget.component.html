@@ -18,10 +18,13 @@
             <app-user-account-preview />
         </app-menu-header>
         <app-menu-option icon="support" cdkMenuItem>Help Center</app-menu-option>
-        <app-menu-option icon="settings" cdkMenuItem>Preferences</app-menu-option>
+        <app-menu-option icon="settings" cdkMenuItem>Settings</app-menu-option>
         <app-menu-separator />
         <app-menu-option icon="description" cdkMenuItem>
             Terms & Conditions
+        </app-menu-option>
+        <app-menu-option icon="description" cdkMenuItem>
+            Privacy Policy
         </app-menu-option>
         <app-menu-separator />
         @if (!signOutAction.hidden()) {
@@ -33,5 +36,12 @@
                 {{ signOutAction.label }}
             </app-menu-option>
         }
+        <app-menu-footer>
+            <div
+                class="flex items-center justify-between text-xs font-semibold bg-neutral-100 text-neutral-500 border-t px-4 py-3">
+                <span>Codesign &#64; {{ currentYear }}</span>
+                <span>v1.0.0</span>
+            </div>
+        </app-menu-footer>
     </app-menu>
 </ng-template>

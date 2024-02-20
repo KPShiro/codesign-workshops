@@ -10,4 +10,6 @@ export class NavbarMenuWidgetComponent {
     signOutAction = inject(SignOutAction).build<void>({
         resolveParams: () => ({}),
     });
+
+    currentYear = new Date().getFullYear().toString();
 }

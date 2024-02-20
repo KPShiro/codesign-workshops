@@ -1,17 +1,14 @@
 <button
     [type]="type"
     [disabled]="disabled"
-    class="btn btn-{{ variant }}"
-    [ngClass]="{ 'btn-icon': icon && !text }">
-    <div class="btn__overlay"></div>
-    <div class="btn__content">
-        @if (icon) {
-            <mat-icon class="leading-5" [icon]="icon" />
-        }
-        @if (text) {
-            <div class="text-sm text-ellipsis overflow-hidden whitespace-nowrap">
-                {{ text }}
-            </div>
-        }
-    </div>
+    class="btn btn--{{ color }} btn--{{ variant }}"
+    [ngClass]="{ 'btn--only-icon': icon && !text, 'btn--rounded': rounded }">
+    @if (icon) {
+        <mat-icon class="leading-5" [icon]="icon" />
+    }
+    @if (text) {
+        <div class="text-sm font-semibold truncate">
+            {{ text }}
+        </div>
+    }
 </button>

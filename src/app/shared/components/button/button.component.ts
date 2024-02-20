@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 type ButtonType = 'button' | 'submit' | 'reset';
+type ButtonColor = 'primary' | 'neutral' | 'inversed';
+type ButtonVariant = 'filled' | 'semitransparent' | 'transparent';
 
 @Component({
     selector: 'app-button',
@@ -11,9 +12,11 @@ type ButtonType = 'button' | 'submit' | 'reset';
 })
 export class ButtonComponent {
     @Input() type: ButtonType = 'button';
-    @Input() variant: ButtonVariant = 'primary';
+    @Input() color: ButtonColor = 'primary';
+    @Input() variant: ButtonVariant = 'filled';
 
     @Input() disabled: boolean = false;
+    @Input() rounded: boolean = true;
 
     @Input() icon?: string;
     @Input() text?: string;

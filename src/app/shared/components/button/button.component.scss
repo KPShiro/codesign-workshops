@@ -1,35 +1,53 @@
 .btn {
-    @apply relative w-full rounded overflow-hidden disabled:bg-neutral-100 disabled:text-neutral-300;
+    @apply w-full px-4 py-2.5 flex gap-2 items-center justify-center overflow-hidden disabled:bg-neutral-100 disabled:text-neutral-300;
 }
 
-.btn__content {
-    @apply relative z-[2] w-full px-4 py-2.5 flex gap-2 items-center justify-center;
+.btn--rounded {
+    @apply rounded;
 }
 
-.btn-icon .btn__content {
+.btn--only-icon {
     @apply px-3 py-2.5;
 }
 
-.btn__overlay {
-    @apply absolute inset-0 z-[1] block opacity-0 bg-primary;
+.btn--primary {
+    &.btn--filled {
+        @apply bg-primary text-onPrimary enabled:hover:bg-primary/90 enabled:active:bg-primary/80;
+    }
+
+    &.btn--semitransparent {
+        @apply bg-primary/10 text-primary enabled:hover:bg-primary/20 enabled:active:bg-primary/25;
+    }
+
+    &.btn--transparent {
+        @apply bg-transparent text-primary enabled:hover:bg-primary/20 enabled:active:bg-primary/25;
+    }
 }
 
-.btn:enabled:hover .btn__overlay {
-    @apply opacity-5;
+.btn--neutral {
+    &.btn--filled {
+        @apply bg-neutral-800 text-neutral-50 enabled:hover:bg-neutral-800/90 enabled:active:bg-neutral-800;
+    }
+
+    &.btn--semitransparent {
+        @apply bg-neutral-800/10 text-neutral-800 enabled:hover:bg-neutral-800/20 enabled:active:bg-neutral-800/25;
+    }
+
+    &.btn--transparent {
+        @apply bg-transparent text-neutral-800 enabled:hover:bg-neutral-800/20 enabled:active:bg-neutral-800/25;
+    }
 }
 
-.btn:enabled:active .btn__overlay {
-    @apply opacity-10;
-}
+.btn--inversed {
+    &.btn--filled {
+        @apply bg-white text-black enabled:hover:bg-white/90 enabled:active:bg-white/80;
+    }
 
-.btn-primary {
-    @apply bg-primary text-onPrimary;
-}
+    &.btn--semitransparent {
+        @apply bg-white/10 text-white enabled:hover:bg-white/20 enabled:active:bg-white/25;
+    }
 
-.btn-secondary {
-    @apply bg-primary/10 text-primary;
-}
-
-.btn-tertiary {
-    @apply bg-transparent text-primary disabled:bg-transparent;
+    &.btn--transparent {
+        @apply bg-transparent text-white enabled:hover:bg-white/20 enabled:active:bg-white/25;
+    }
 }

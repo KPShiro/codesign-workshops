@@ -27,10 +27,7 @@
                             variant="semitransparent"
                             icon="filter_list"
                             [disabled]="vm.requestsLoading" />
-                        <app-button
-                            color="primary"
-                            text="Create request"
-                            [disabled]="vm.requestsLoading" />
+                        <app-button color="primary" text="Create request" />
                     </div>
                 </div>
                 @if (vm.requests.length > 0) {

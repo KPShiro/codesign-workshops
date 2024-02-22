@@ -3,19 +3,30 @@
         @for (company of vm.companies; track $index) {
             <app-menu-option
                 cdkMenuItem
-                [selected]="company.id === vm.selectedCompanyId"
+                [selected]="company.selected"
                 (click)="handleSelectCompany(company.id)">
                 <div class="flex gap-3 items-center">
-                    <app-avatar [name]="company.name" />
+                    <app-avatar
+                        variant="semitransparent"
+                        [color]="company.selected ? 'inversed' : 'primary'"
+                        [name]="company.name" />
                     <div class="flex flex-col text-ellipsis overflow-hidden">
                         <span class="whitespace-nowrap">{{ company.name }}</span>
                         <span
-                            class="whitespace-normal text-xs font-normal text-neutral-500">
+                            class="whitespace-normal text-xs font-normal"
+                            [ngClass]="{
+                                'opacity-60': company.selected,
+                                'text-neutral-500': !company.selected
+                            }">
                             {{ company.email }}
                         </span>
                     </div>
                 </div>
             </app-menu-option>
         }
+        <app-menu-separator />
+        <app-menu-option cdkMenuItem icon="edit_note">
+            Manage organizations
+        </app-menu-option>
     </app-menu>
 }

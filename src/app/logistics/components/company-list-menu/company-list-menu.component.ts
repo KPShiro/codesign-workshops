@@ -12,7 +12,9 @@ export class CompanyListMenuComponent {
         this._companyAccountService.linkedCompanies$,
     ]).pipe(
         filter(([company, companies]) => !!company && !!companies),
-        map(([company, companies]) => ({ selectedCompanyId: company!.id, companies }))
+        map(([company, companies]) => ({
+            companies: companies.map(c => ({ ...c, selected: c.id === company!.id })),
+        }))
     );
 
     constructor(private readonly _companyAccountService: CompanyAccountService) {}

@@ -1,7 +1,11 @@
 <button
     type="button"
-    class="w-full text-left pl-3 pr-5 py-3 flex items-center gap-3 enabled:hover:bg-neutral-100 disabled:opacity-25 disabled:cursor-default"
-    [disabled]="disabled || selected">
+    class="menu-option"
+    [disabled]="disabled || selected"
+    [ngClass]="{
+        'menu-option--disabled': disabled,
+        'menu-option--selected': selected
+    }">
     @if (icon) {
         <mat-icon [icon]="icon" class="text-neutral-500"></mat-icon>
     }

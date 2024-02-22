@@ -1,7 +1,10 @@
 @if (vm$ | async; as vm) {
-    <div class="flex gap-4 w-[256px] p-4 border-b bg-neutral-100">
+    <div class="flex gap-4 w-[256px] p-4 border-b">
         <div class="flex-1 flex items-center gap-4">
-            <app-avatar color="primary" [name]="vm.user.fullName" />
+            <app-avatar
+                variant="semitransparent"
+                color="primary"
+                [name]="vm.user.fullName" />
             <div class="max-w-full overflow-hidden flex flex-col">
                 <div class="text-sm font-semibold truncate">
                     {{ vm.user.fullName }}

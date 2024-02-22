@@ -1,0 +1,11 @@
+.menu-option {
+    @apply w-full text-left pl-3 pr-5 py-3 flex items-center gap-3 disabled:cursor-default;
+}
+
+.menu-option:not(.menu-option--selected) {
+    @apply enabled:hover:bg-neutral-100 disabled:opacity-25;
+}
+
+.menu-option--selected {
+    @apply bg-primary text-onPrimary;
+}

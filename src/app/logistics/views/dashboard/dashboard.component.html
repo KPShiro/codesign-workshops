@@ -1,12 +1,18 @@
-<div class="max-w-screen-2xl mx-auto p-10 flex flex-col gap-10">
-    @if (vm$ | async; as vm) {
-        <div class="flex flex-col gap-4">
-            <h3 class="text-neutral-700">All Requests</h3>
-            @if (vm.requests.length > 0) {
+<div class="relative">
+    <div class="max-w-screen-2xl mx-auto p-10 flex flex-col gap-10">
+        @if (vm$ | async; as vm) {
+            <div class="flex flex-col gap-4">
+                <h3 class="flex gap-3 items-center text-neutral-700">
+                    All Requests
+                    @if (vm.requestsLoading) {
+                        <app-spinner />
+                    }
+                </h3>
                 <div class="flex items-center justify-between gap-10">
                     <div class="flex-1 flex gap-2">
                         <input
                             type="search"
+                            [disabled]="vm.requestsLoading"
                             placeholder="Search in requests..."
                             class="form-input w-full max-w-md" />
                     </div>
@@ -14,38 +20,47 @@
                         <app-button
                             color="neutral"
                             variant="semitransparent"
-                            icon="download" />
+                            icon="download"
+                            [disabled]="vm.requestsLoading" />
                         <app-button
                             color="neutral"
                             variant="semitransparent"
-                            icon="filter_list" />
+                            icon="filter_list"
+                            [disabled]="vm.requestsLoading" />
+                        <app-button
+                            color="primary"
+                            text="Create request"
+                            [disabled]="vm.requestsLoading" />
+                    </div>
+                </div>
+                @if (vm.requests.length > 0) {
+                    <div class="flex flex-col gap-2">
+                        @for (request of vm.requests; track $index) {
+                            <app-request-list-item [request]="request" />
+                        }
+                    </div>
+                }
+                @if (vm.requests.length === 0) {
+                    <div
+                        class="flex flex-col gap-6 px-10 py-32 items-center justify-center rounded border bg-neutral-100">
+                        <img
+                            src="assets/images/camping-flatline.svg"
+                            alt="authentication"
+                            class="max-h-32" />
+                        <div class="flex flex-col gap-2 max-w-prose text-center">
+                            <h4>Create your first request</h4>
+                            <p class="text-neutral-500 text-sm">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Ipsam quas fuga sint necessitatibus exercitationem saepe
+                                impedit animi architecto, enim mollitia fugit
+                                repellendus aut explicabo illo! Harum esse repudiandae
+                                libero quae.
+                            </p>
+                        </div>
                         <app-button color="primary" text="Create request" />
                     </div>
-                </div>
-                <div class="flex flex-col gap-2">
-                    @for (request of vm.requests; track $index) {
-                        <app-request-list-item [request]="request" />
-                    }
-                </div>
-            } @else {
-                <div
-                    class="flex flex-col gap-6 h-full px-10 py-32 items-center justify-center rounded bg-primary/5">
-                    <img
-                        src="assets/images/camping-flatline.svg"
-                        alt="authentication"
-                        class="max-h-32" />
-                    <div class="flex flex-col gap-2 max-w-prose text-center">
-                        <h4>It's time to create your first request.</h4>
-                        <p class="text-neutral-500">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Ipsam quas fuga sint necessitatibus exercitationem saepe
-                            impedit animi architecto, enim mollitia fugit repellendus
-                            aut explicabo illo! Harum esse repudiandae libero quae.
-                        </p>
-                    </div>
-                    <app-button color="primary" icon="add" text="Create request" />
-                </div>
-            }
-        </div>
-    }
+                }
+            </div>
+        }
+    </div>
 </div>

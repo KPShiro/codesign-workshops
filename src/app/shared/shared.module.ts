@@ -13,6 +13,7 @@ import {
     MenuHeaderComponent,
     MenuOptionComponent,
     MenuSeparatorComponent,
+    ProgressBarComponent,
     SpinnerComponent,
 } from '@codesign/shared/components';
 
@@ -28,6 +29,7 @@ const components = [
     MenuOptionComponent,
     MenuSeparatorComponent,
     SpinnerComponent,
+    ProgressBarComponent,
 ];
 
 @NgModule({

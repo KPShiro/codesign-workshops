@@ -1,0 +1,7 @@
+<div class="progress-bar" [ngClass]="{ 'progress-bar--indeterminate': indeterminate }">
+    @if (!indeterminate) {
+        <div class="progress-bar-value" [ngStyle]="{ width: value + '%' }"></div>
+    } @else {
+        <div class="progress-bar-value"></div>
+    }
+</div>

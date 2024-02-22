@@ -1,0 +1,33 @@
+.spinner {
+    @apply h-4 w-4;
+}
+
+.spinner-shape {
+    @apply border-[3px] border-primary border-t-transparent rounded-full h-full w-full;
+}
+
+.spinner--md {
+    @apply h-4 w-4;
+}
+
+.spinner--sm {
+    @apply h-3 w-3;
+}
+
+.spinner--primary {
+    .spinner-shape {
+        @apply border-primary border-t-transparent;
+    }
+}
+
+.spinner--neutral {
+    .spinner-shape {
+        @apply border-neutral-800 border-t-transparent;
+    }
+}
+
+.spinner--inversed {
+    .spinner-shape {
+        @apply border-white border-t-transparent;
+    }
+}

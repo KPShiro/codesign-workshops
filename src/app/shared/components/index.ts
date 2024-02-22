@@ -7,4 +7,5 @@ export * from './menu-header/menu-header.component';
 export * from './menu-option/menu-option.component';
 export * from './menu-separator/menu-separator.component';
 export * from './menu/menu.component';
+export * from './progress-bar/progress-bar.component';
 export * from './spinner/spinner.component';

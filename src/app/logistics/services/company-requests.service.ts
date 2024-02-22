@@ -48,7 +48,7 @@ export class CompanyRequestsService {
         return this._requests.getValue();
     }
 
-    private _loading = new BehaviorSubject<boolean>(false);
+    private _loading = new BehaviorSubject<boolean>(true);
 
     get loading$(): Observable<boolean> {
         return this._loading.asObservable();

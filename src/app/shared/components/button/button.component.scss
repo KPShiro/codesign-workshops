@@ -1,0 +1,53 @@
+.btn {
+    @apply w-full px-4 py-2.5 flex gap-2 items-center justify-center overflow-hidden disabled:bg-neutral-100 disabled:text-neutral-300;
+}
+
+.btn--rounded {
+    @apply rounded;
+}
+
+.btn--only-icon {
+    @apply px-3 py-2.5;
+}
+
+.btn--primary {
+    &.btn--filled {
+        @apply bg-primary text-onPrimary enabled:hover:bg-primary/90 enabled:active:bg-primary/80;
+    }
+
+    &.btn--semitransparent {
+        @apply bg-primary/10 text-primary enabled:hover:bg-primary/20 enabled:active:bg-primary/25;
+    }
+
+    &.btn--transparent {
+        @apply bg-transparent text-primary enabled:hover:bg-primary/20 enabled:active:bg-primary/25;
+    }
+}
+
+.btn--neutral {
+    &.btn--filled {
+        @apply bg-neutral-800 text-neutral-50 enabled:hover:bg-neutral-800/90 enabled:active:bg-neutral-800;
+    }
+
+    &.btn--semitransparent {
+        @apply bg-neutral-800/10 text-neutral-800 enabled:hover:bg-neutral-800/20 enabled:active:bg-neutral-800/25;
+    }
+
+    &.btn--transparent {
+        @apply bg-transparent text-neutral-800 enabled:hover:bg-neutral-800/20 enabled:active:bg-neutral-800/25;
+    }
+}
+
+.btn--inversed {
+    &.btn--filled {
+        @apply bg-white text-black enabled:hover:bg-white/90 enabled:active:bg-white/80;
+    }
+
+    &.btn--semitransparent {
+        @apply bg-white/10 text-white enabled:hover:bg-white/20 enabled:active:bg-white/25;
+    }
+
+    &.btn--transparent {
+        @apply bg-transparent text-white enabled:hover:bg-white/20 enabled:active:bg-white/25;
+    }
+}

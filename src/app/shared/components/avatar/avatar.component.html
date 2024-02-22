@@ -1,0 +1,9 @@
+<div class="avatar avatar--{{ color }} avatar--{{ variant }}">
+    @if (initials) {
+        <span class="font-semibold">{{ initials }}</span>
+    } @else if (icon) {
+        <mat-icon [icon]="icon"></mat-icon>
+    } @else {
+        <mat-icon icon="question_mark"></mat-icon>
+    }
+</div>

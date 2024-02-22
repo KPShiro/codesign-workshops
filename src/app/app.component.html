@@ -1,19 +1,2 @@
-<nav class="sticky top-0 left-0 w-64 h-full p-6 border-r">
-    <div class="flex flex-col gap-2">
-        @for (group of groups; track $index) {
-            <h5 class="uppercase">{{ group.label }}</h5>
-            @for (link of group.links; track $index) {
-                <a
-                    class="flex items-center justify-between text-zinc-800 border hover:border-zinc-300 px-4 py-3 rounded"
-                    [routerLink]="[link.path]"
-                    routerLinkActive="!text-primary-600 bg-primary-200 !border-primary-500">
-                    {{ link.label }}
-                    <mat-icon icon="keyboard_arrow_right"></mat-icon>
-                </a>
-            }
-        }
-    </div>
-</nav>
-<div class="flex flex-col w-full">
-    <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
+<app-notifications-container></app-notifications-container>

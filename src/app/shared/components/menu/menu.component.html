@@ -1,0 +1,8 @@
+<div
+    class="min-w-[160px] w-fit max-w-[256px] rounded bg-white border shadow-sm overflow-hidden">
+    <ng-content select="app-menu-header"></ng-content>
+    <div class="w-full py-2 max-h-96 overflow-y-auto">
+        <ng-content select="app-menu-option, app-menu-separator"></ng-content>
+    </div>
+    <ng-content select="app-menu-footer"></ng-content>
+</div>

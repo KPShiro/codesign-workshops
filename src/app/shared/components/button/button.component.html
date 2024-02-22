@@ -1,0 +1,14 @@
+<button
+    [type]="type"
+    [disabled]="disabled"
+    class="btn btn--{{ color }} btn--{{ variant }}"
+    [ngClass]="{ 'btn--only-icon': icon && !text, 'btn--rounded': rounded }">
+    @if (icon) {
+        <mat-icon class="leading-5" [icon]="icon" />
+    }
+    @if (text) {
+        <div class="text-sm font-semibold truncate">
+            {{ text }}
+        </div>
+    }
+</button>

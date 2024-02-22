@@ -1,0 +1,10 @@
+<div class="fixed bottom-0 right-0 flex flex-col gap-2 p-6">
+    @for (notification of notifications; track $index) {
+        @if (notification.type === 'error') {
+            <app-error-notification [notification]="$any(notification)" />
+        }
+        @if (notification.type === 'message') {
+            <div class="p-4 bg-black text-white">NOT IMPLEMENTED</div>
+        }
+    }
+</div>

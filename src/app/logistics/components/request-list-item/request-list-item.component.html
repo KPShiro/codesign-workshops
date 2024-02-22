@@ -1,0 +1,56 @@
+<div class="border rounded bg-white">
+    <div class="flex gap-4 items-center p-4">
+        <div
+            class="flex items-center justify-center h-6 w-6 border p-1 rounded-full select-none">
+            @if (request.status.status === 'PENDING') {
+                <mat-icon class="text-neutral-400" icon="pending" />
+            } @else if (request.status.status === 'APPROVED') {
+                <mat-icon class="text-primary-500" icon="check_circle" />
+            } @else if (request.status.status === 'CANCELLED') {
+                <mat-icon class="text-neutral-400" icon="block" />
+            } @else {
+                <mat-icon class="text-red-500" icon="cancel" />
+            }
+        </div>
+        <div class="flex flex-col">
+            <div>{{ request.container.number }}</div>
+            <div class="text-xs text-neutral-500">
+                {{ request.container.size | containerSize }}
+                {{ request.container.type | containerType }}
+            </div>
+        </div>
+        <div class="flex-1 flex flex-col">
+            <div>{{ request.createdAt | date }}</div>
+            <div class="text-xs text-neutral-500">
+                {{ request.author.user.firstName }} {{ request.author.user.lastName }}
+            </div>
+        </div>
+        <div class="flex flex-col text-right">
+            <div>
+                {{
+                    request.price.current.amount
+                        | intlCurrency: request.price.current.currency
+                }}
+            </div>
+            <div class="text-xs text-neutral-500">
+                {{
+                    request.price.original.amount
+                        | intlCurrency: request.price.original.currency
+                }}
+            </div>
+        </div>
+        <div class="flex gap-1">
+            <button
+                class="w-10 h-10 flex items-center justify-center rounded hover:bg-neutral-100">
+                <mat-icon icon="more_horiz" />
+            </button>
+        </div>
+    </div>
+    @if (request.status.status === 'DENIED') {
+        <div class="flex gap-4 items-center bg-neutral-100 px-4 py-3">
+            <span class="text-sm text-neutral-500">
+                This request has been denied, but changes were suggested.
+            </span>
+        </div>
+    }
+</div>

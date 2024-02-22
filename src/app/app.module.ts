@@ -2,23 +2,31 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-
+import { UnlockFeatureViewComponent } from '@codesign/core/views';
+import { SharedModule } from '@codesign/shared/shared.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
+import { AppInitializerProvider } from './app.initializer';
 import { routes } from './app.routes';
-import { appInitializerProvider } from './app.initializer';
+import {
+    ErrorNotificationComponent,
+    NotificationsContainerComponent,
+} from './core/components';
+import { ErrorHandlerProvider } from './core/handlers';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [
+        AppComponent,
+        UnlockFeatureViewComponent,
+        NotificationsContainerComponent,
+        ErrorNotificationComponent,
+    ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-
         SharedModule,
-
         RouterModule.forRoot(routes),
     ],
     bootstrap: [AppComponent],
-    providers: [appInitializerProvider],
+    providers: [AppInitializerProvider, ErrorHandlerProvider],
 })
 export class AppModule {}

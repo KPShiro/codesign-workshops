@@ -1,0 +1,35 @@
+<div class="flex gap-0.5 rounded overflow-hidden">
+    @if (vm$ | async; as vm) {
+        <app-navbar-widget
+            [text]="vm.company.name"
+            [loading]="vm.company.loading"
+            [rounded]="false"
+            (clicked)="handlePrimaryButtonClick()" />
+        @if (vm.hasMultipleCompanies) {
+            <app-navbar-widget
+                icon="arrow_drop_down"
+                [text]="null"
+                [rounded]="false"
+                [cdkMenuTriggerFor]="menu"
+                [cdkMenuPosition]="[
+                    {
+                        originX: 'end',
+                        originY: 'bottom',
+                        overlayX: 'end',
+                        overlayY: 'top',
+                        offsetY: 4
+                    }
+                ]" />
+        }
+    } @else {
+        <app-navbar-widget
+            [text]="null"
+            [loading]="true"
+            [rounded]="false"
+            [disabled]="true" />
+    }
+</div>
+
+<ng-template #menu>
+    <app-company-list-menu></app-company-list-menu>
+</ng-template>

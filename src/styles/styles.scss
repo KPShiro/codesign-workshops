@@ -33,7 +33,7 @@
 }
 
 body {
-    @apply bg-zinc-50 text-zinc-800;
+    @apply bg-neutral-50 text-neutral-800;
 }
 
 h1,
@@ -67,4 +67,27 @@ h5 {
 
 h6 {
     @apply text-sm;
+}
+
+.form-input,
+.form-textarea,
+.form-select,
+.form-multiselect {
+    border-width: theme('borderWidth.DEFAULT');
+    border-color: theme('borderColor.DEFAULT');
+    border-radius: theme('borderRadius.DEFAULT');
+}
+
+.form-input:disabled,
+.form-textarea:disabled,
+.form-select:disabled,
+.form-multiselect:disabled {
+    background-color: theme('backgroundColor.neutral[100]');
+}
+
+.form-input.ng-dirty.ng-invalid,
+.form-textarea.ng-dirty.ng-invalid,
+.form-select.ng-dirty.ng-invalid,
+.form-multiselect.ng-dirty.ng-invalid {
+    border-color: theme('borderColor.danger');
 }

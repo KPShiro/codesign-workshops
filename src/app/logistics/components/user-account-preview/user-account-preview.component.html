@@ -1,0 +1,16 @@
+@if (vm$ | async; as vm) {
+    <div class="flex gap-4 w-[256px] p-4 border-b bg-neutral-100">
+        <div class="flex-1 flex items-center gap-4">
+            <app-avatar color="primary" [name]="vm.user.fullName" />
+            <div class="max-w-full overflow-hidden flex flex-col">
+                <div class="text-sm font-semibold truncate">
+                    {{ vm.user.fullName }}
+                </div>
+                <div class="text-xs text-neutral-500">
+                    {{ vm.user.email }}
+                </div>
+            </div>
+        </div>
+        <mat-icon class="text-neutral-400" icon="chevron_right" />
+    </div>
+}
